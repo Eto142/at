@@ -238,7 +238,7 @@
                     
                     <div class="btn-flex">
                         <a class="btn btn-primary me-3" href="{{route('register')}}">Start Trading</a>
-                        <a class="btn btn-outline-primary" href="{{route('register')}}">Try a Free Demo</a>
+                        <a class="btn btn-outline-primary" href="{{route('login')}}">Login</a>
                     </div>
                 </div>
             </div>
@@ -439,7 +439,7 @@
                             <p class="fw-400 text-white lead-3 mb-4">IC Markets Global is one of the largest Forex CFD providers in the world by trading volume.</p>
                             <div class="btn-flex">
                                 <a class="btn btn-primary me-3" href="{{route('register')}}">Start Trading</a>
-                                <a class="btn btn-outline-primary" href="{{route('register')}}">Try a Free Demo</a>
+                                <a class="btn btn-outline-primary" href="{{route('login')}}">Login</a>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -588,8 +588,8 @@
                             <a class="btn btn-primary me-0 me-md-3" id="home_live_registration_11" href="{{route('register')}}">
                                 Get Started
                             </a>
-                            <a class="btn btn-outline-primary" id="home_demo_registration_1" href="{{route('register')}}">
-                                Try a Free Demo
+                            <a class="btn btn-outline-primary" id="home_demo_registration_1" href="{{route('login')}}">
+                                Login
                             </a>
                         </div>
                     </div>

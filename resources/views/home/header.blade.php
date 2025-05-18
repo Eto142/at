@@ -202,18 +202,7 @@
                     <div class="top-left-bar">
                         <ul>
                             
-                                <li>
-                                    <a href="#" class="current">CLIENT</a>
-                                </li>
-                                
-                                    <li>
-                                        <a href="#" target="_blank" class="to-go">PARTNERS</a>
-                                    </li>
-                                
-                                <li>
-                                    <a id="navigation_blog" href="#" target="_blank" class="to-go">BLOG</a>
-                                </li>
-                            
+                               
                         </ul>
                     </div>
                 </div>
@@ -221,26 +210,11 @@
                     <div class="top-right-bar"> 
                         <ul>
                             
-                                <li>
-                                    <a id="top_socialapp" href="{{url('social-trading')}}" class="top-item"><span class="new">NEW</span>IC Social</a>
-                                </li>
+                               
                             
                             
                             
-                                {{-- <li>
-                                    <a id="top_webtrader" href="https://webtrader-sc.icmarkets.com/" target="_blank" class="top-item">WebTrader</a>
-                                </li> --}}
-                            
-                            
-                            <li>
-                                <a id="top_live_registration" href="{{url('live')}}" class="top-item">Start Trading</a>
-                            </li>
-                            <li>
-                                <a id="top_demo_registration" href="{{url('demo')}}" class="top-item">Try a Free Demo</a>
-                            </li>
-                            <li>
-                                <a id="top_contact_us" href="{{url('contact')}}" class="top-item">Contact Us</a>
-                            </li>
+                               
                             
                             <li class="lang-list d-block">
                                 <div class="language-select language-select--style ">

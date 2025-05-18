@@ -11,6 +11,7 @@ use GuzzleHttp\Client;
 use App\Models\Account;
 use App\Models\Deposit;
 use App\Models\Earning;
+use App\Models\Bonus;
 use App\Models\Traders;
 use App\Models\Refferal;
 use App\Models\Transfer;
@@ -48,55 +49,16 @@ class UserController extends Controller
                     // $data = json_decode($response->getBody(), true);
                     // $price = $data['bpi']['USD']['rate_float'];
 
+                   
                     $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
                     $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
-                    // $data['user_balance'] =  $data['credit'] - $data['debit'];
+                    $data['user_balance'] =  $data['credit'] - $data['debit'];
                     // $data['btc_balance'] = $data['user_balance'] / $price;
 
-                    $data['XRP'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'XRP')  ->sum('amount'); 
-                    $data['user_add_XRP'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'XRP')  ->sum('credit');
-                    $data['user_debit_XRP'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'XRP')  ->sum('debit');                
-                    $data['XRP'] = $data['XRP'] + $data['user_add_XRP'] -  $data['user_debit_XRP'];
 
-
-                    $data['BNB'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'BNB')  ->sum('amount'); 
-                    $data['user_add_BNB'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'BNB')  ->sum('credit');
-                    $data['user_debit_BNB'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'BNB')  ->sum('debit');                
-                    $data['BNB'] = $data['BNB'] + $data['user_add_BNB'] -  $data['user_debit_BNB'];
-                    
-                    $data['solana'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'Solana')  ->sum('amount'); 
-                    $data['user_add_solana'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Solana')  ->sum('credit');
-                    $data['user_debit_solana'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Solana')  ->sum('debit');                
-                    $data['solana'] = $data['solana'] + $data['user_add_solana'] -  $data['user_debit_solana'];
-                    
-                    $data['litecoin'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'Litecoin')  ->sum('amount'); 
-                    $data['user_add_litecoin'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Litecoin')  ->sum('credit');
-                    $data['user_debit_litecoin'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Litecoin')  ->sum('debit');                
-                    $data['ilitecoin'] = $data['litecoin'] + $data['user_add_litecoin'] -  $data['user_debit_litecoin'];
-
-
-                   
-                    $data['usdt'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'Usdt')  ->sum('amount'); 
-                    $data['user_add_usdt'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Usdt')  ->sum('credit');
-                    $data['user_debit_usdt'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Usdt')  ->sum('debit');                
-                    $data['usdt'] = $data['usdt'] + $data['user_add_usdt'] -  $data['user_debit_usdt'];
-
-
-
-                    $data['bitcoin'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'bitcoin')  ->sum('amount'); 
-                    $data['user_add_bitcoin'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Bitcoin')  ->sum('credit');
-                    $data['user_debit_bitcoin'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Bitcoin')  ->sum('debit');                
-                    $data['bitcoin'] = $data['bitcoin'] + $data['user_add_bitcoin'] -  $data['user_debit_bitcoin'];
-
-
-
-                    $data['ethereum'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'Ethereum')  ->sum('amount'); 
-                    $data['user_add_ethereum'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Ethereum')  ->sum('credit');
-                    $data['user_debit_ethereum'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Ethereum')  ->sum('debit');                
-                    $data['ethereum'] = $data['ethereum'] + $data['user_add_ethereum'] -  $data['user_debit_ethereum'];
-                    
                     $data['deposit'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->sum('amount');
                     $data['withdrawal'] = Withdrawal::where('user_id', Auth::user()->id)->sum('amount');
+                     $data['bonus'] = Bonus::where('user_id', Auth::user()->id)->sum('amount');
                     $data['addprofit'] = Profit::where('user_id', Auth::user()->id)->sum('amount');
                     $data['debitprofit'] = Debitprofit::where('user_id', Auth::user()->id)->sum('amount');
                     $data['profit'] = $data['addprofit'] - $data['debitprofit'];
@@ -104,10 +66,8 @@ class UserController extends Controller
                     // $data['plan'] = Plan::where('user_id',Auth::user()->id)->sum('amount');
                     $data['referral'] = Refferal::where('user_id', Auth::user()->id)->sum('amount');
                     $data['balance'] = $data['profit'] + $data['deposit'] + $data['earning'] + $data['referral'] - $data['withdrawal'];
-                    
-                    $data['user_balance'] =  $data['bitcoin']  + $data['ethereum']  + $data['usdt']  + $data['ilitecoin']  + $data['solana']  + $data['BNB'] + $data['XRP'] ; 
-                    
                     return view('dashboard.home', $data);
+                
                 
 
 
@@ -135,65 +95,24 @@ $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitc
 $data = json_decode($response->getBody(), true);
 $price = $data['bitcoin']['usd'];
 
+                    
+                                      
                     $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
                     $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
-                    // $data['user_balance'] =  $data['credit'] - $data['debit'];
-                   
+                    $data['user_balance'] =  $data['credit'] - $data['debit'];
                     // $data['btc_balance'] = $data['user_balance'] / $price;
 
-                    $data['XRP'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'XRP')  ->sum('amount'); 
-                    $data['user_add_XRP'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'XRP')  ->sum('credit');
-                    $data['user_debit_XRP'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'XRP')  ->sum('debit');                
-                    $data['XRP'] = $data['XRP'] + $data['user_add_XRP'] -  $data['user_debit_XRP'];
 
-
-                    $data['BNB'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'BNB')  ->sum('amount'); 
-                    $data['user_add_BNB'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'BNB')  ->sum('credit');
-                    $data['user_debit_BNB'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'BNB')  ->sum('debit');                
-                    $data['BNB'] = $data['BNB'] + $data['user_add_BNB'] -  $data['user_debit_BNB'];
-                    
-                    $data['solana'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'Solana')  ->sum('amount'); 
-                    $data['user_add_solana'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Solana')  ->sum('credit');
-                    $data['user_debit_solana'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Solana')  ->sum('debit');                
-                    $data['solana'] = $data['solana'] + $data['user_add_solana'] -  $data['user_debit_solana'];
-                    
-                    $data['litecoin'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'Litecoin')  ->sum('amount'); 
-                    $data['user_add_litecoin'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Litecoin')  ->sum('credit');
-                    $data['user_debit_litecoin'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Litecoin')  ->sum('debit');                
-                    $data['ilitecoin'] = $data['litecoin'] + $data['user_add_litecoin'] -  $data['user_debit_litecoin'];
-
-
-                   
-                    $data['usdt'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'Usdt')  ->sum('amount'); 
-                    $data['user_add_usdt'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Usdt')  ->sum('credit');
-                    $data['user_debit_usdt'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Usdt')  ->sum('debit');                
-                    $data['usdt'] = $data['usdt'] + $data['user_add_usdt'] -  $data['user_debit_usdt'];
-
-
-
-                    $data['bitcoin'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'bitcoin')  ->sum('amount'); 
-                    $data['user_add_bitcoin'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Bitcoin')  ->sum('credit');
-                    $data['user_debit_bitcoin'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Bitcoin')  ->sum('debit');                
-                    $data['bitcoin'] = $data['bitcoin'] + $data['user_add_bitcoin'] -  $data['user_debit_bitcoin'];
-
-
-
-                    $data['ethereum'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'Ethereum')  ->sum('amount'); 
-                    $data['user_add_ethereum'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Ethereum')  ->sum('credit');
-                    $data['user_debit_ethereum'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Ethereum')  ->sum('debit');                
-                    $data['ethereum'] = $data['ethereum'] + $data['user_add_ethereum'] -  $data['user_debit_ethereum'];
-                    
                     $data['deposit'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->sum('amount');
                     $data['withdrawal'] = Withdrawal::where('user_id', Auth::user()->id)->sum('amount');
+                     $data['bonus'] = Bonus::where('user_id', Auth::user()->id)->sum('amount');
                     $data['addprofit'] = Profit::where('user_id', Auth::user()->id)->sum('amount');
                     $data['debitprofit'] = Debitprofit::where('user_id', Auth::user()->id)->sum('amount');
                     $data['profit'] = $data['addprofit'] - $data['debitprofit'];
                     $data['earning'] = Earning::where('user_id', Auth::user()->id)->sum('amount');
-                    $data['plan'] =  Plan::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
                     // $data['plan'] = Plan::where('user_id',Auth::user()->id)->sum('amount');
                     $data['referral'] = Refferal::where('user_id', Auth::user()->id)->sum('amount');
                     $data['balance'] = $data['profit'] + $data['deposit'] + $data['earning'] + $data['referral'] - $data['withdrawal'];
-                    $data['user_balance'] =  $data['bitcoin']  + $data['ethereum']  + $data['usdt']  + $data['ilitecoin']  + $data['solana']  + $data['BNB'] + $data['XRP'] ;  
                     return view('dashboard.home', $data);
                 
             } else {
@@ -261,64 +180,25 @@ $price = $data['bitcoin']['usd'];
             // $data = json_decode($response->getBody(), true);
             // $price = $data['bpi']['USD']['rate_float'];
 
-            $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
-            $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
-            // $data['user_balance'] =  $data['credit'] - $data['debit'];
-            $data['user_balance'] =  $data['bitcoin']  + $data['ethereum']  + $data['usdt']  + $data['ilitecoin']  + $data['solana']  + $data['BNB'] + $data['XRP'] ;  
-            // $data['btc_balance'] = $data['user_balance'] / $price;
-            $data['XRP'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'XRP')  ->sum('amount'); 
-                    $data['user_add_XRP'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'XRP')  ->sum('credit');
-                    $data['user_debit_XRP'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'XRP')  ->sum('debit');                
-                    $data['XRP'] = $data['XRP'] + $data['user_add_XRP'] -  $data['user_debit_XRP'];
+           
+                                      
+                    $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
+                    $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
+                    $data['user_balance'] =  $data['credit'] - $data['debit'];
+                    // $data['btc_balance'] = $data['user_balance'] / $price;
 
 
-                    $data['BNB'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'BNB')  ->sum('amount'); 
-                    $data['user_add_BNB'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'BNB')  ->sum('credit');
-                    $data['user_debit_BNB'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'BNB')  ->sum('debit');                
-                    $data['BNB'] = $data['BNB'] + $data['user_add_BNB'] -  $data['user_debit_BNB'];
-                    
-                    $data['solana'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'Solana')  ->sum('amount'); 
-                    $data['user_add_solana'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Solana')  ->sum('credit');
-                    $data['user_debit_solana'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Solana')  ->sum('debit');                
-                    $data['solana'] = $data['solana'] + $data['user_add_solana'] -  $data['user_debit_solana'];
-                    
-                    $data['litecoin'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'Litecoin')  ->sum('amount'); 
-                    $data['user_add_litecoin'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Litecoin')  ->sum('credit');
-                    $data['user_debit_litecoin'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Litecoin')  ->sum('debit');                
-                    $data['ilitecoin'] = $data['litecoin'] + $data['user_add_litecoin'] -  $data['user_debit_litecoin'];
-
-
-                   
-                    $data['usdt'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'Usdt')  ->sum('amount'); 
-                    $data['user_add_usdt'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Usdt')  ->sum('credit');
-                    $data['user_debit_usdt'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Usdt')  ->sum('debit');                
-                    $data['usdt'] = $data['usdt'] + $data['user_add_usdt'] -  $data['user_debit_usdt'];
-
-
-
-                    $data['bitcoin'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'bitcoin')  ->sum('amount'); 
-                    $data['user_add_bitcoin'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Bitcoin')  ->sum('credit');
-                    $data['user_debit_bitcoin'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Bitcoin')  ->sum('debit');                
-                    $data['bitcoin'] = $data['bitcoin'] + $data['user_add_bitcoin'] -  $data['user_debit_bitcoin'];
-
-
-
-                    $data['ethereum'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'Ethereum')  ->sum('amount'); 
-                    $data['user_add_ethereum'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Ethereum')  ->sum('credit');
-                    $data['user_debit_ethereum'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Ethereum')  ->sum('debit');                
-                    $data['ethereum'] = $data['ethereum'] + $data['user_add_ethereum'] -  $data['user_debit_ethereum'];
-
-            $data['deposit'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->sum('amount');
-            $data['withdrawal'] = Withdrawal::where('user_id', Auth::user()->id)->sum('amount');
-            $data['addprofit'] = Profit::where('user_id', Auth::user()->id)->sum('amount');
-            $data['debitprofit'] = Debitprofit::where('user_id', Auth::user()->id)->sum('amount');
-            $data['profit'] = $data['addprofit'] - $data['debitprofit'];
-            $data['earning'] = Earning::where('user_id', Auth::user()->id)->sum('amount');
-            // $data['plan'] = Plan::where('user_id',Auth::user()->id)->sum('amount');
-            $data['referral'] = Refferal::where('user_id', Auth::user()->id)->sum('amount');
-            $data['balance'] = $data['profit'] + $data['deposit'] + $data['earning'] + $data['referral'] - $data['withdrawal'];
-            
-            return view ('dashboard.home', $data);
+                    $data['deposit'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->sum('amount');
+                    $data['withdrawal'] = Withdrawal::where('user_id', Auth::user()->id)->sum('amount');
+                     $data['bonus'] = Bonus::where('user_id', Auth::user()->id)->sum('amount');
+                    $data['addprofit'] = Profit::where('user_id', Auth::user()->id)->sum('amount');
+                    $data['debitprofit'] = Debitprofit::where('user_id', Auth::user()->id)->sum('amount');
+                    $data['profit'] = $data['addprofit'] - $data['debitprofit'];
+                    $data['earning'] = Earning::where('user_id', Auth::user()->id)->sum('amount');
+                    // $data['plan'] = Plan::where('user_id',Auth::user()->id)->sum('amount');
+                    $data['referral'] = Refferal::where('user_id', Auth::user()->id)->sum('amount');
+                    $data['balance'] = $data['profit'] + $data['deposit'] + $data['earning'] + $data['referral'] - $data['withdrawal'];
+                    return view('dashboard.home', $data);
         
 
 
@@ -1037,15 +917,15 @@ $price = $data['bitcoin']['usd'];
     public function withdrawals()
     {
 
-       $client = new Client();
-$response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
-$data = json_decode($response->getBody(), true);
-$price = $data['bitcoin']['usd'];
+//        $client = new Client();
+// $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
+// $data = json_decode($response->getBody(), true);
+// $price = $data['bitcoin']['usd'];
 
         $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
         $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
         $data['user_balance'] =  $data['credit'] - $data['debit'];
-        $data['btc_balance'] = $data['user_balance'] / $price;
+        // $data['btc_balance'] = $data['user_balance'] / $price;
         return view('dashboard.withdrawals', $data);
     }
     public function withdrawFunds()

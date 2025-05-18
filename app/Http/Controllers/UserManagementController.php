@@ -8,6 +8,7 @@ use App\Models\Kyc;
 use App\Models\Plan;
 use App\Models\User;
 use App\Models\Profit;
+use App\Models\Bonus;
 use App\Models\Deposit;
 use App\Models\Earning;
 use App\Models\Traders;
@@ -710,67 +711,21 @@ public function saveNewAccount(Request $request)
      
         // get the kyc 
         $kyc_status = $profileData->kyc_status; 
-    //   $user = User::with('kyc')->find($user_id);
-    //     if ($user->kyc) {
-    //       $kyc_status = $user->kyc->status; 
-    //       }
+
 
         //sum all transactions
-       
-        $data['XRP'] = Deposit::where('user_id', $user_id)->where('status', '1')->where('payment_method', 'XRP')  ->sum('amount');
-        $data['transaction'] = Transaction::where('user_id', $user_id)->where('status', '1')->where('cryptocurrency', 'XRP')  ->sum('credit');
-        $data['debit_transaction'] = Transaction::where('user_id', $user_id)->where('status', '1')->where('cryptocurrency', 'XRP')  ->sum('debit');
-        $data['XRP'] = $data['XRP'] + $data['transaction'] - $data['debit_transaction'];
 
-
-       
-        $data['BNB'] = Deposit::where('user_id', $user_id)->where('status', '1')->where('payment_method', 'BNB')  ->sum('amount');
-        $data['transaction'] = Transaction::where('user_id', $user_id)->where('status', '1')->where('cryptocurrency', 'BNB')  ->sum('credit');
-        $data['debit_transaction'] = Transaction::where('user_id', $user_id)->where('status', '1')->where('cryptocurrency', 'BNB')  ->sum('debit');
-        $data['BNB'] = $data['BNB'] + $data['transaction'] -$data['debit_transaction'] ;
-
-
-       
-        $data['solana'] = Deposit::where('user_id', $user_id)->where('status', '1')->where('payment_method', 'Solana')  ->sum('amount');
-        $data['transaction'] = Transaction::where('user_id', $user_id)->where('status', '1')->where('cryptocurrency', 'Solana')  ->sum('credit');
-        $data['debit_transaction'] = Transaction::where('user_id', $user_id)->where('status', '1')->where('cryptocurrency', 'Solana')  ->sum('debit');
-        $data['solana'] = $data['solana'] + $data['transaction'] - $data['debit_transaction'] ;
-        
-       
-        $data['litecoin'] = Deposit::where('user_id', $user_id)->where('status', '1')->where('payment_method', 'Litecoin')  ->sum('amount');
-        $data['transaction'] = Transaction::where('user_id', $user_id)->where('status', '1')->where('cryptocurrency', 'Litecoin')  ->sum('credit');
-        $data['debit_transaction'] = Transaction::where('user_id', $user_id)->where('status', '1')->where('cryptocurrency', 'Litecoin')  ->sum('debit');
-        $data['litecoin'] = $data['litecoin'] + $data['transaction']  - $data['debit_transaction'] ;
-
-
-        
-    
-        $data['usdt'] = Deposit::where('user_id', $user_id)->where('status', '1')->where('payment_method', 'Usdt')  ->sum('amount');
-        $data['transaction'] = Transaction::where('user_id', $user_id)->where('status', '1')->where('cryptocurrency', 'Usdt')  ->sum('credit');
-        $data['debit_transaction'] = Transaction::where('user_id', $user_id)->where('status', '1')->where('cryptocurrency', 'Usdt')  ->sum('debit');
-        $data['usdt'] = $data['usdt'] + $data['transaction'] - $data['debit_transaction'] ;
-
-
-      
-        $data['bitcoin'] = Deposit::where('user_id', $user_id)->where('status', '1')->where('payment_method', 'Bitcoin')  ->sum('amount');
-        $data['transaction'] = Transaction::where('user_id', $user_id)->where('status', '1')->where('cryptocurrency', 'Bitcoin')  ->sum('credit');
-        $data['debit_transaction'] = Transaction::where('user_id', $user_id)->where('status', '1')->where('cryptocurrency', 'Bitcoin')  ->sum('debit');
-        $data['bitcoin'] = $data['bitcoin'] + $data['transaction']  - $data['debit_transaction'] ;
-
-
-       
-        $data['ethereum'] = Deposit::where('user_id', $user_id)->where('status', '1')->where('payment_method', 'Ethereum')  ->sum('amount');
-        $data['transaction'] = Transaction::where('user_id', $user_id)->where('status', '1')->where('cryptocurrency', 'Ethereum')  ->sum('credit');
-        $data['debit_transaction'] = Transaction::where('user_id', $user_id)->where('status', '1')->where('cryptocurrency', 'Ethereum')  ->sum('debit');
-        $data['ethereum'] = $data['ethereum'] + $data['transaction']  - $data['debit_transaction'];
-        
-        $data['withdrawal']     = DB::table('withdrawals')->where('user_id',$user_id)->where('status', '1')->sum('amount');
+       $data['profits'] = DB::table('profits')->where('user_id', $user_id)->sum('amount');
+       $data['bonus'] = DB::table('bonuses')->where('user_id', $user_id)->sum('amount');
+       $data['withdrawal']     = DB::table('withdrawals')->where('user_id',$user_id)->sum('amount');
         //deposits
         $data['deposit']     = DB::table('deposits')->where('user_id',$user_id)->where('status', '1')->sum('amount');
         $data['credit'] = Transaction::where('user_id', $user_id)->where('status', '1')->sum('credit');
         $data['debit'] = Transaction::where('user_id', $user_id)->where('status', '1')->sum('debit');
        $data['user_balance'] =  $data['credit'] - $data['debit'];
-       
+        //account balance  
+
+        
         return view('admin.user_data',$data, compact('profileData','kyc_status'));
     
      }
@@ -1029,100 +984,69 @@ public function updateTrader(Request $request, int $trader_id)
     
     public function creditDebit(Request $request)
 {
-    
-  
- // Validation rules
- $validator = Validator::make($request->all(), [
-    'type' => 'required|string',
-    't_type' => 'required|string|in:Credit,Debit',
-    'cryptocurrency' => 'required|string|in:Bitcoin,Ethereum,Usdt,Litecoin,Solana,BNB,XRP',
-    'amount' => 'required|numeric|min:0',
-    'user_id' => 'required|integer|exists:users,id',
-]);
+    $type = $request['type'];
+    $transactionType = $request['t_type']; // 'Credit' or 'Debit'
+    $transaction_id = rand(76503737, 12344994); // Ideally replace with UUID for production
 
-// Check if validation fails
-if ($validator->fails()) {
-    return back()->withErrors($validator)->withInput();
-}
-
-$type = $request->input('type');
-
-if ($type === 'Profit') {
-    $transactionType = $request->input('t_type');
-    $cryptocurrency = $request->input('cryptocurrency');
-    $transaction_id = rand(76503737, 12344994);
-    $creditDebit = new Transaction;
-    $creditDebit->transaction_id = $transaction_id;
-
-    if ($transactionType === 'Credit') {
-        $creditDebit->credit = $request->input('amount');
-        $creditDebit->debit = 0;
-        $creditDebit->transaction_type = "Credit";
-        $creditDebit->transaction = "credit";
-    } elseif ($transactionType === 'Debit') {
-        $creditDebit->debit = $request->input('amount');
-        $creditDebit->credit = 0;
-        $creditDebit->transaction_type = "Debit";
-        $creditDebit->transaction = "debit";
-    }
-
-    // Add the cryptocurrency to the transaction
-    $creditDebit->cryptocurrency = $cryptocurrency;
-
-    $creditDebit->status = '1';
-    $creditDebit->user_id = $request->input('user_id');
-    $creditDebit->save();
-
-    return back()->with('message', 'User Profit Topped Up Successfully');
-}
-
-// Optional: Handle other types if needed
-// else {
-//     return back()->with('error', 'Invalid transaction type.');
-// }
-
-
-
-if ($type === 'Deposit') {
-    $transactionType = $request['t_type'];
-    $cryptocurrency = $request->input('cryptocurrency');
-    $transaction_id = rand(76503737, 12344994);
-
-    // Creating a new Deposit instance
-    $deposit = new Deposit;
-
-    // Check if the transaction type is Credit
-    if ($transactionType === 'Credit') {
-        $deposit->amount = $request['amount'];
-    } elseif ($transactionType === 'Debit') {
-        return back()->with('message', 'Sorry you cannot Debit Deposit');
-    }
-
-    // Setting the remaining fields
-    $deposit->transaction_id = $transaction_id;
-    $deposit->user_id = $request->input('user_id');
-    $deposit->status = '0';
-    $deposit->payment_method = $cryptocurrency; // Insert cryptocurrency into payment_method
-    $deposit->save();
-
-    // Creating a new Transaction instance
+    // Create transaction
     $transaction = new Transaction;
-    $transaction->user_id = $request->input('user_id');
     $transaction->transaction_id = $transaction_id;
-    $transaction->transaction_type = "Credit";
-    $transaction->transaction = "credit";
-    $transaction->credit = $request['amount'];
-    $transaction->debit = "0";
-    $transaction->cryptocurrency = $cryptocurrency;
-    $transaction->status = 1;
+    $transaction->user_id = $request['user_id'];
+    $transaction->status = '1';
+
+    if ($transactionType === 'Credit') {
+        $transaction->credit = $request['amount'];
+        $transaction->debit = 0;
+        $transaction->transaction_type = "Credit";
+        $transaction->transaction = "credit";
+    } elseif ($transactionType === 'Debit') {
+        $transaction->debit = $request['amount'];
+        $transaction->credit = 0;
+        $transaction->transaction_type = "Debit";
+        $transaction->transaction = "debit";
+    } else {
+        return back()->with('error', 'Invalid transaction type.');
+    }
+
+    // Save to transactions table
     $transaction->save();
 
-    return back()->with('message', 'Deposit Added Successfully');
+    // Handle specific type tables
+    if ($type === 'Profit') {
+        $profit = new Profit;
+        $profit->user_id = $request['user_id'];
+        $profit->amount = $request['amount'];
+        $profit->transaction_id = $transaction_id;
+        $profit->save();
+
+        return back()->with('message', 'User Profit Topped Up Successfully');
+
+    } elseif ($type === 'Bonus') {
+        // Always credit
+        $bonus = new Bonus;
+        $bonus->user_id = $request['user_id'];
+        $bonus->amount = $request['amount'];
+        $bonus->transaction_id = $transaction_id;
+        $bonus->save();
+
+        return back()->with('message', 'User Bonus Added Successfully');
+
+    } elseif ($type === 'Deposit') {
+        $deposit = new Deposit;
+        $deposit->user_id = $request['user_id'];
+        $deposit->amount = $request['amount'];
+        $deposit->transaction_id = $transaction_id;
+        $deposit->type = $transactionType; // Save as 'Credit' or 'Debit'
+        $deposit->status = 1; 
+        $deposit->save();
+
+        return back()->with('message', 'User Deposit Processed Successfully');
+
+    } else {
+        return back()->with('error', 'Invalid transaction type provided.');
+    }
 }
 
-    
-    
-}
 
 
    public function fundWallet()
@@ -1142,6 +1066,7 @@ if ($type === 'Deposit') {
  $user->userEarnings()->delete();
  $user->debitprofit()->delete();
  $user->referral()->delete();
+ $user->bonus()->delete();
  $user->profit()->delete();
  $user->withdrawal()->delete();
  $user->deposit()->delete();
@@ -1855,7 +1780,7 @@ if ($type === 'Deposit') {
       'full_name' => $full_name,
      ];
     
-      Mail::to($email)->send(new activateAccountEmail($user));
+    //   Mail::to($email)->send(new activateAccountEmail($user));
       $status = array();
       $status['user_status'] = '1';
       $update = DB::table('users')->where('id',$id)->update($status);

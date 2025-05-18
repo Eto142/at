@@ -96,7 +96,7 @@
  Notification: {{Auth::user()->update_notification}}
   </marquee>
 </div> 
-  <div class="tradingview-header">
+  <!-- <div class="tradingview-header">
     <div>
       <span style="color: black">{{Auth::user()->name}}</span><br>
       <span style="color: black">Total Balance: ${{$user_balance}}</span>
@@ -112,7 +112,397 @@
     </div>
                                                                 
     </div>
+  </div> -->
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+  :root {
+    --primary: #4361ee;
+    --primary-light: #e6e9ff;
+    --success: #06d6a0;
+    --success-light: #e0faf4;
+    --warning: #ffbe0b;
+    --warning-light: #fff6dd;
+    --danger: #ef476f;
+    --danger-light: #fde8ed;
+    --info: #118ab2;
+    --info-light: #e1f2f8;
+    --text: #2b2d42;
+    --text-light: #8d99ae;
+    --bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --border-radius: 12px;
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    padding: 2rem;
+    line-height: 1.6;
+  }
+
+  .account-dashboard {
+    max-width: 1400px;
+    margin: auto;
+  }
+
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .dashboard-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    color: black;
+  }
+
+  .dashboard-subtitle {
+    color: black;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 0.5rem;
+  }
+
+  .date-selector {
+    background: var(--card-bg);
+    border: 1px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .date-selector:hover {
+    background: #f5f5f5;
+  }
+
+  .card-box {
+    border-radius: var(--border-radius);
+    background: var(--card-bg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    border: none;
+  }
+
+  .card-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-label {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .card-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0.5rem 0;
+  }
+
+  .card-change {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.85rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 20px;
+    margin-top: 0.5rem;
+  }
+
+  .positive {
+    background-color: rgba(6, 214, 160, 0.1);
+    color: var(--success);
+  }
+
+  .negative {
+    background-color: rgba(239, 71, 111, 0.1);
+    color: var(--danger);
+  }
+
+  .card-icon {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.8rem;
+    opacity: 0.15;
+    z-index: 0;
+  }
+
+  .card-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, rgba(67, 97, 238, 0.3), rgba(67, 97, 238, 0.1));
+    width: 100%;
+  }
+
+  /* Card specific styles */
+  .card-balance {
+    border-left: none;
+    background: linear-gradient(135deg, var(--primary-light), white);
+  }
+  .card-balance .card-icon { color: var(--primary); }
+
+  .card-deposit {
+    border-left: none;
+    background: linear-gradient(135deg, var(--success-light), white);
+  }
+  .card-deposit .card-icon { color: var(--success); }
+
+  .card-profit {
+    border-left: none;
+    background: linear-gradient(135deg, var(--info-light), white);
+  }
+  .card-profit .card-icon { color: var(--info); }
+
+  .card-bonus {
+    border-left: none;
+    background: linear-gradient(135deg, var(--warning-light), white);
+  }
+  .card-bonus .card-icon { color: var(--warning); }
+
+  .card-withdraw {
+    border-left: none;
+    background: linear-gradient(135deg, var(--danger-light), white);
+  }
+  .card-withdraw .card-icon { color: var(--danger); }
+
+  /* Summary card */
+  .summary-card {
+    background: linear-gradient(135deg, #f1f3f6, white);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    height: 100%;
+  }
+
+  .summary-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  .summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .summary-label {
+    color: var(--text-light);
+  }
+
+  .summary-value {
+    font-weight: 500;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    body {
+      padding: 1.5rem 1rem;
+    }
+    
+    .dashboard-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    
+    .card-value {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .card-box {
+      padding: 1.2rem;
+    }
+    
+    .card-icon {
+      font-size: 1.5rem;
+    }
+  }
+  a {
+    text-decoration:none;
+  }
+</style>
+
+<body>
+  <div class="account-dashboard">
+    <div class="dashboard-header">
+      <div>
+        <h2 class="dashboard-title">Account Overview</h2>
+        <p class="dashboard-subtitle">Welcome {{Auth::user()->name}}! Here's what's happening with your account today.</p>
+      </div>
+      <!-- <div class="date-selector">
+        <i class="fas fa-calendar-alt me-2"></i>
+        Last 30 days
+        <i class="fas fa-chevron-down ms-2"></i>
+      </div> -->
+    </div>
+    
+    <div class="row g-4 mb-4">
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card-box card-balance">
+          <div class="card-label">
+            <i class="fas fa-wallet me-2"></i>
+            Total Balance
+          </div>
+          <div class="card-value">${{$user_balance}}</div>
+          <!-- <span class="card-change positive">
+            <i class="fas fa-arrow-up me-1"></i> 12.5%
+          </span> -->
+          <div class="card-icon">
+            <i class="fas fa-wallet"></i>
+          </div>
+          <div class="card-progress" style="width: 75%"></div>
+        </div>
+      </div>
+      
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card-box card-deposit">
+          <div class="card-label">
+            <i class="fas fa-money-bill-wave me-2"></i>
+            Total Deposit
+          </div>
+          <div class="card-value">${{$deposit}}</div>
+          <!-- <span class="card-change positive">
+            <i class="fas fa-arrow-up me-1"></i> 8.2%
+          </span> -->
+          <div class="card-icon">
+            <i class="fas fa-money-bill-wave"></i>
+          </div>
+          <div class="card-progress" style="width: 60%"></div>
+        </div>
+      </div>
+      
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card-box card-profit">
+          <div class="card-label">
+            <i class="fas fa-chart-line me-2"></i>
+            Total Profit
+          </div>
+          <div class="card-value">${{$profit}}</div>
+          <!-- <span class="card-change positive">
+            <i class="fas fa-arrow-up me-1"></i> 5.7%
+          </span> -->
+          <div class="card-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div class="card-progress" style="width: 45%"></div>
+        </div>
+      </div>
+      
+      <div class="col-12 col-md-6 col-lg-6">
+        <div class="card-box card-bonus">
+          <div class="card-label">
+            <i class="fas fa-gift me-2"></i>
+            Total Bonus
+          </div>
+          <div class="card-value">${{$bonus}}</div>
+          <!-- <span class="card-change negative">
+            <i class="fas fa-arrow-down me-1"></i> 2.3%
+          </span> -->
+          <div class="card-icon">
+            <i class="fas fa-gift"></i>
+          </div>
+          <div class="card-progress" style="width: 30%"></div>
+        </div>
+      </div>
+      
+      <div class="col-12 col-md-6 col-lg-6">
+        <div class="card-box card-withdraw">
+          <div class="card-label">
+            <i class="fas fa-hand-holding-usd me-2"></i>
+            Total Withdrawal
+          </div>
+          <div class="card-value">${{$withdrawal}}</div>
+          <!-- <span class="card-change positive">
+            <i class="fas fa-arrow-up me-1"></i> 3.1%
+          </span> -->
+          <div class="card-icon">
+            <i class="fas fa-hand-holding-usd"></i>
+          </div>
+          <div class="card-progress" style="width: 25%"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row g-4">
+      <div class="col-12 col-lg-8">
+        <div class="card-box" style="min-height: 300px;">
+          <div class="card-label">
+            <i class="fas fa-chart-bar me-2"></i>
+            Performance Overview
+          </div>
+          <!-- Placeholder for chart -->
+          <div style="display: flex; justify-content: center; align-items: center; height: 250px; color: var(--text-light);">
+            <div style="text-align: center;">
+              <i class="fas fa-chart-pie" style="font-size: 3rem; opacity: 0.3; margin-bottom: 1rem;"></i>
+              <p>Performance chart would be displayed here</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-12 col-lg-4">
+        <div class="summary-card">
+          <h3 class="summary-title">Quick Summary</h3>
+          
+          <div class="summary-item">
+            <span class="summary-label">Account Status</span>
+            <span class="summary-value text-success">Active</span>
+          </div>
+          
+          <div class="summary-item">
+            <span class="summary-label">Last Deposit</span>
+            <span class="summary-value">$1,500.00</span>
+          </div>
+          
+          <div class="summary-item">
+            <span class="summary-label">Last Withdrawal</span>
+            <span class="summary-value">$300.00</span>
+          </div>
+          
+          <!-- <div class="summary-item">
+            <span class="summary-label">Active Investments</span>
+            <span class="summary-value">3</span>
+          </div>
+           -->
+          <div class="summary-item">
+            <span class="summary-label">Account Age</span>
+            <span class="summary-value">{{ Auth::user()->created_at->diffForHumans() }}
+</span>
+          </div>
+          
+          <!-- <button class="btn btn-primary w-100 mt-3" style="border-radius: 8px;">
+            <i class="fas fa-download me-2"></i>Download Statement
+          </button> -->
+        </div>
+      </div>
+    </div>
   </div>
+</body>
+
+
   <div id="tradingview_widget" class="tradingview-widget"></div>
 </div>
 
@@ -232,7 +622,7 @@
         <div class="crypto-change" id="bitcoin-change">24h Change: 2.5%</div>
       </div>
     </div>
-    <div class="amount-of-zero">{{$bitcoin}}</div>
+    
   </div>
   <!-- Ethereum -->
   <div class="crypto-item" id="ethereum">
@@ -244,7 +634,7 @@
         <div class="crypto-change" id="ethereum-change">24h Change: 1.8%</div>
       </div>
     </div>
-    <div class="amount-of-zero">{{$ethereum}}</div>
+    
   </div>
   <!-- Litecoin -->
   <div class="crypto-item" id="litecoin">
@@ -256,7 +646,7 @@
         <div class="crypto-change" id="litecoin-change">24h Change: 1.2%</div>
       </div>
     </div>
-    <div class="amount-of-zero">{{$ilitecoin}}</div>
+   
   </div>
   <!-- USDT -->
   <div class="crypto-item" id="tether">
@@ -268,7 +658,7 @@
         <div class="crypto-change" id="tether-change">24h Change: 0.01%</div>
       </div>
     </div>
-    <div class="amount-of-zero">{{$usdt}}</div>
+   
   </div>
   <!-- BNB -->
   <div class="crypto-item" id="binancecoin">
@@ -280,7 +670,7 @@
         <div class="crypto-change" id="binancecoin-change">24h Change: 3.5%</div>
       </div>
     </div>
-    <div class="amount-of-zero">{{$BNB}}</div>
+ 
   </div>
 
 
@@ -301,7 +691,7 @@
       <div class="crypto-change" id="solana-change">24h Change: Loading...</div>
     </div>
   </div>
-  <div class="amount-of-zero">{{$solana}}</div>
+ 
 </div>
 
 
@@ -319,7 +709,7 @@
         <div class="crypto-change" id="ripple-change">24h Change: 2.0%</div>
       </div>
     </div>
-    <div class="amount-of-zero">{{$XRP}}</div>
+   
   </div>
 </div>
 

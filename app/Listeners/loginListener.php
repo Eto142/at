@@ -50,7 +50,7 @@ class loginListener
         
              
         // Send email to the user
-         Mail::to($event->user->email)->send(new UserLoggedInEmail($data));
+        //  Mail::to($event->user->email)->send(new UserLoggedInEmail($data));
     }
 
     private function getCountryFromIp($ipAddress)

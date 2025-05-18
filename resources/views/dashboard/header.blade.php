@@ -851,6 +851,162 @@
 
     <link rel="stylesheet" href="theme/plugins/drag-and-drop/dragula/dragula.css">
     <style>
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  .tradingview-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #ffffff; /* Set background color to white */
+    padding: 20px; /* Add padding for better spacing */
+  }
+  .tradingview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    background-color: #f1f3f6;
+    border-bottom: 1px solid #ccc;
+    border-radius: 5px; /* Add border radius for a rounded appearance */
+    margin-bottom: 20px; /* Add margin to separate from the widget */
+  }
+  .client-info {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff; /* Set background color to white */
+    padding: 10px; /* Add padding for better spacing */
+    border-radius: 5px; /* Add border radius for a rounded appearance */
+  }
+  .client-info span {
+    margin-right: 10px;
+  }
+  .client-info img {
+    border-radius: 50%;
+  }
+  .tradingview-widget {
+    width: 100%;
+    height: 600px; /* Increase height for better visibility on laptops */
+    max-width: 1000px; /* Limit max width for better readability */
+  }
+
+  @media (max-width: 768px) {
+    /* Adjustments for tablet and below */
+    .tradingview-widget {
+      height: 600px; /* Reduce height for smaller screens */
+    }
+  }
+   .container {
+      width: 80%;
+      margin: 20px auto;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: rgba(240, 240, 240, 0.8); /* Transparent background color */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  
+    .marquee-container {
+      overflow: hidden;
+      border-radius: 10px;
+    }
+  
+    .marquee {
+      color: black;
+      /* background-color: rgba(48, 92, 137, 0.8); Transparent background color */
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0px;
+   
+  }
+
+  .crypto-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+  }
+
+  .crypto-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+  }
+
+  .crypto-info {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+  }
+
+  .crypto-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+  }
+
+  .crypto-details {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .crypto-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .crypto-price, .crypto-change {
+    font-size: 18px;
+    color: #333;
+  }
+
+  .crypto-change.negative {
+    color: red;
+  }
+
+  .crypto-change.positive {
+    color: green;
+  }
+
+  .amount-of-zero {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-left: auto;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .crypto-container {
+      width: 75vw; /* Set width to 100% of viewport width for laptop screens */
+      max-width: none; /* Remove max-width */
+      padding: 40px; /* Adjust padding if needed */
+    }
+  }
+
+
         body.dark .widget-content .progress-info .progress-info {
             display: flex;
             justify-content: space-between;
@@ -1037,13 +1193,13 @@
 
         <div class="navbar-nav theme-brand flex-row  text-center">
             <div class="nav-logo">
-                <div class="nav-item theme-logo">
+                <!-- <div class="nav-item theme-logo">
                     <a href="{{url('/dashboard')}}">
                         <img src="ICM-logo.svg" alt="logo">
                     </a>
-                </div>
+                </div> -->
                 <div class="nav-item theme-text">
-                    <a href="{{url('/dashboard')}}" class="nav-link">IC Markets</a>
+                    <a href="{{url('/dashboard')}}" class="nav-link">YO</a>
                 </div>
             </div>
             <div class="nav-item sidebar-toggle">

@@ -70,6 +70,11 @@ class User extends Authenticatable
         return $this->hasMany(Debitprofit::class, 'user_id');
     }
 
+     public function bonus()
+    {
+        return $this->hasMany(Bonus::class, 'user_id');
+    }
+
 
 
     public function referral()

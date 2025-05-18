@@ -22,7 +22,7 @@
                                               Actions
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-lg-right">
-                                                {{-- <a class="dropdown-item" href="{{route('login.activity',$profileData->id)}}">Login Activity</a> --}}
+                                                <a class="dropdown-item" href="{{route('login.activity',$profileData->id)}}">Login Activity</a>
                                                 <a class="dropdown-item" href="{{route('deposit.history',$profileData->id)}}">Deposit History</a>
                                                 <a class="dropdown-item" href="{{route('transfer.history',$profileData->id)}}">Transfer History</a>
                                                 <a class="dropdown-item" href="{{route('withdrawal.history',$profileData->id)}}">Withdrawal History</a>
@@ -31,9 +31,8 @@
                                                 <a href="#"  data-toggle="modal" data-target="#withdrawalsettings" class="dropdown-item">Withdrawal Settings</a>
                                                 <a href="#"  data-toggle="modal" data-target="#accountverificationModal" class="dropdown-item">Account Verification</a>
                                                 <a href="#" data-toggle="modal" data-target="#clearacctModal" class="dropdown-item">Clear Account</a>
-                                                <a href="#" data-toggle="modal" data-target="#addescrowModal" class="dropdown-item">Add Escrow Amount</a>
-                                                <a href="#" data-toggle="modal" data-target="#Notification" class="dropdown-item">Update Notification</a>
-                                                {{-- <a href="#" data-toggle="modal" data-target="#AccountUpgrade" class="dropdown-item">Account Upgrade</a> --}}
+                                                <a href="#" data-toggle="modal" data-target="#AccountManager" class="dropdown-item">Account Manager's Name</a>
+                                                <a href="#" data-toggle="modal" data-target="#AccountUpgrade" class="dropdown-item">Account Upgrade</a>
                                                 <a href="#" data-toggle="modal" data-target="#sendmailtooneuserModal" class="dropdown-item">Send Email</a>
                                                 {{-- <a href="#" data-toggle="modal" data-target="#switchuserModal"  class="dropdown-item text-success">Gain Access</a> --}}
                                                 <a href="#" data-toggle="modal" data-target="#deleteModal" class="dropdown-item text-danger">Delete {{$profileData->name}}</a>
@@ -45,45 +44,35 @@
                             </div>
                             <div class="p-3 mt-4 border rounded row text-light">
                                 <div class="col-md-3">
-                                    <h5 class="text-bold">Bitcoin</h5>
-                                    <p>${{$bitcoin}}</p>
+                                    <h5 class="text-bold">Total Balance</h5>
+                                    <p>${{$user_balance}}</p>
                                 </div>
                                 
 
                                 <div class="col-md-3">
-                                    <h5 class="text-bold">Ethereum</h5>
-                                    <p>${{$ethereum}}</p>
+                                    <h5 class="text-bold"> Total Deposit</h5>
+                                    <p>${{$deposit}}</p>
                                 </div>
 
                                 <div class="col-md-3">
-                                    <h5 class="text-bold">Usdt</h5>
-                                    <p>${{$usdt}}</p>
+                                    <h5 class="text-bold"> Total Withdrawal</h5>
+                                    <p>${{$withdrawal}}</p>
                                 </div>
 
                                 <div class="col-md-3">
-                                    <h5 class="text-bold">Litecoin</h5>
-                                    <p>${{$litecoin}}</p>
+                                    <h5 class="text-bold">Total Profit</h5>
+                                    <p>${{$profits}}</p>
                                 </div>
 
                                 <div class="col-md-3">
-                                    <h5 class="text-bold">BNB</h5>
-                                    <p>${{$BNB}}</p>
+                                    <h5 class="text-bold">Total Bonus</h5>
+                                    <p>${{$bonus}}</p>
                                 </div>
 
                                 <div class="col-md-3">
-                                    <h5 class="text-bold">Solana</h5>
-                                    <p>${{$solana}}</p>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <h5 class="text-bold">XRP</h5>
-                                    <p>${{$XRP}}</p>
-                                </div>
-
-                                {{-- <div class="col-md-3">
                                     <h5>User Account Status</h5>
                                                                         <span class="badge badge-success">{{$profileData->account_upgrade}}</span>
-                                                                    </div> --}}
+                                                                    </div>
                                 <div class="col-md-3">
                                     <h5>Purchased. Account</h5>
                                     
@@ -108,39 +97,10 @@
                                     <span class="badge badge-success">Verified</span>@endif
                                 </div>
                                 <div class="col-md-3">
-                                    <h5>Escrow Account</h5>
-                                                                        <span class="badge badge-primary">${{$profileData->update_escrow}}</span>
-                             
-                             
-                             
+                                    <h5>Account Manager</h5>
+                                                                        <span class="badge badge-primary">{{$profileData->account_manager}}</span>
                                                                     </div>
-                                                                    
                             </div>
-
-                            {{-- <div class="p-3 mt-4 border rounded row text-light">
-                                <div class="col-md-3">
-                                    <h5 class="text-bold">Bitcoin</h5>
-                                    <p>${{$user_balance}}</p>
-                                </div>
-                                
-
-                                <div class="col-md-3">
-                                    <h5 class="text-bold">Deposit</h5>
-                                    <p>${{$deposit}}</p>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <h5 class="text-bold">Withdrawal</h5>
-                                    <p>${{$withdrawal}}</p>
-                                </div>
-                            </div>
-
- --}}
-
-
-
-
-
                             <div class="mt-3 row text-light">
                                 <div class="col-md-12">
                                     <h5>USER INFORMATION</h5>
@@ -217,23 +177,10 @@
                             <select class="form-control bg-dark text-light" name="type" required>
                                 <option value="" selected disabled>Select Column</option>
                                 <option value="Profit">Profit</option>
+                                <option value="Bonus">Bonus</option>
                                 <option value="Deposit">Deposit</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <h5 class="text-light">Select Crypto Type</h5>
-                            <select class="form-control bg-dark text-light" name="cryptocurrency">
-                                <option value="Bitcoin">Bitcoin</option>
-                                <option value="Ethereum">Ethereum</option>
-                                <option value="Usdt">Usdt</option>
-                                <option value="Litecoin"> Litecoin</option>
-                                <option value="Solana">Solana</option>
-                                <option value="BNB">BNB</option>
-                                <option value="XRP">XRP</option>
-                            </select>
-                        </div>
-                         
-
                         <div class="form-group">
                             <h5 class="text-light">Select credit to add, debit to subtract.</h5>
                             <select class="form-control bg-dark text-light" name="t_type" required>
@@ -257,48 +204,20 @@
 
 
 
-    <div id="Notification" class="modal fade" role="dialog">
+    <div id="AccountManager" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header bg-dark">
-                    <h4 class="modal-title text-light">Notification: {{$profileData->update_notification}}.</strong></h4>
+                    <h4 class="modal-title text-light">Account Manager Name: {{$profileData->account_manager}}.</strong></h4>
                     <button type="button" class="close text-light" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body bg-dark">
-                <form action="{{ route('notification',$profileData->id)}}" method ="POST">
+                <form action="{{ route('account.manager',$profileData->id)}}" method ="POST">
 											{{ csrf_field()}}  
                                        
                         <div class="form-group">
-                            
-                            <input class="form-control bg-dark text-light" placeholder="{{$profileData->update_notification}}" type="text" name="update_notification">
-                        </div>
-                       
-                        
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-light" value="Submit">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div id="addescrowModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header bg-dark">
-                    <h4 class="modal-title text-light">Escrow Account Amount: {{$profileData->update_escrow}}.</strong></h4>
-                    <button type="button" class="close text-light" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body bg-dark">
-                <form action="{{ route('update.escrow',$profileData->id)}}" method ="POST">
-											{{ csrf_field()}}  
-                                       
-                        <div class="form-group">
-                            <input class="form-control bg-dark text-light" placeholder="{{$profileData->update_escrow}}" type="number" name="update_escrow">
+                            <input class="form-control bg-dark text-light" placeholder="{{$profileData->account_manager}}" type="text" name="account_manager">
                         </div>
                        
                         
