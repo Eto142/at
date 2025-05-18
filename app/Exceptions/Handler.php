@@ -3,6 +3,8 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -27,4 +29,16 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    public function render($request, Throwable $exception)
+{
+    if ($exception instanceof HttpExceptionInterface) {
+        return response()->view('errors.any', ['exception' => $exception], $exception->getStatusCode());
+    }
+
+      // Fallback for all other errors
+    return response()->view('errors.any', ['exception' => new \Symfony\Component\HttpKernel\Exception\HttpException(500, $exception->getMessage())], 500);
+
+    return parent::render($request, $exception);
+}
 }

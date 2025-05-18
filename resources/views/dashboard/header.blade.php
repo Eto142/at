@@ -1199,7 +1199,7 @@
                     </a>
                 </div> -->
                 <div class="nav-item theme-text">
-                    <a href="{{url('/dashboard')}}" class="nav-link">YO</a>
+                    <a href="{{url('/dashboard')}}" class="nav-link"> <img id="profile-img" style="width:180px;" class="profile-img-card" src="assets/images/logo.png" /></a>
                 </div>
             </div>
             <div class="nav-item sidebar-toggle">

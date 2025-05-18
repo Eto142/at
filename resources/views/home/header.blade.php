@@ -5,7 +5,7 @@
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
         
-            <!--<title id="cryptoHide">CFD & Forex Trading | Stocks & CFDs on Commodities | IC Markets Global</title>-->
+            <!--<title id="cryptoHide">CFD & Forex Trading | Stocks & CFDs on Commodities | Pinnacle Assets Trade</title>-->
         
         
                         
@@ -144,7 +144,7 @@
             <link rel="stylesheet" href="../../assets/css/style.css">
         
         
-            <link rel="icon" href="https://www.icmarkets.com/ICM_Favicon.ico">
+            <link rel="icon" href="assets/images/logo.png">
         
         <meta data-n-head="true" charset="utf-8">
         <meta data-n-head="true" name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1.0">
@@ -266,7 +266,7 @@
                             <div class="logo">
                                 <a id="navigation_regulator_2" href="/">
                                     
-                                        <img class="fsa-logo" src="https://www.icmarkets.com/assets/icons/ICM-logo-fsa.svg" width="172" height="43" alt="IC Trading Logo"/>
+                                        <img class="fsa-logo" src="assets/images/logo.png" width="172" height="43" alt="IC Trading Logo"/>
                                     
                                 </a>
                             </div>
@@ -328,7 +328,7 @@
                                                                     
                                                                         <li class="dropdown-list-container__list-item" data-target=".navbar-collapse.in">
                                                                             <a id="navigation_why_us" href="{{url('why')}}">
-                                                                                Why IC Markets Global <span class="glyphicon glyphicon-arrow-right"></span>
+                                                                                Why Pinnacle Assets Trade <span class="glyphicon glyphicon-arrow-right"></span>
                                                                             </a>
                                                                         </li>
                                                                     
@@ -386,7 +386,7 @@
                                                                     
                                                                         <li class="dropdown-list-container__list-item" data-target=".navbar-collapse.in">
                                                                             <a href="{{url('ic-mobile')}}">
-                                                                                IC Markets Global Mobile App <span class="glyphicon glyphicon-arrow-right"></span>
+                                                                                Pinnacle Assets Trade Mobile App <span class="glyphicon glyphicon-arrow-right"></span>
                                                                             </a>
                                                                         </li>
                                                                     
@@ -829,12 +829,12 @@
                                                                     <ul class="dropdown-list-container___list">
                                                                         <li class="dropdown-list-container__list-item" data-target=".navbar-collapse.in">
                                                                             <a id="navigation_platforms" href="{{url('about')}}">
-                                                                                About IC Markets Global <span class="glyphicon glyphicon-arrow-right"></span>
+                                                                                About Pinnacle Assets Trade <span class="glyphicon glyphicon-arrow-right"></span>
                                                                             </a>
                                                                         </li>
                                                                         <li class="dropdown-list-container__list-item" data-target=".navbar-collapse.in">
                                                                             <a id="navigation_why_us_3" href="{{url('why')}}">
-                                                                                Why IC Markets Global <span class="glyphicon glyphicon-arrow-right"></span>
+                                                                                Why Pinnacle Assets Trade <span class="glyphicon glyphicon-arrow-right"></span>
                                                                             </a>
                                                                         </li>
                                                                         <li class="dropdown-list-container__list-item" data-target=".navbar-collapse.in">
@@ -943,7 +943,7 @@
                                                                         </li>
                                                                         <li class="dropdown-list-container__list-item" data-target=".navbar-collapse.in">
                                                                             
-                                                                                <a id="navigation_blog" class="cursor-pointer" href="#" target="_blank"><span class="icm-blogmarker">IC Markets Global Blog</span></a>
+                                                                                <a id="navigation_blog" class="cursor-pointer" href="#" target="_blank"><span class="icm-blogmarker">Pinnacle Assets Trade Blog</span></a>
                                                                             
                                                                         </li>
                                                                         
@@ -1002,7 +1002,7 @@
                             <div class="client-login-block">
                                 
                                 <a class="btn btn-outline-primary-sm client-login-button" id="navigation_clientArea_2"  href="{{route('login')}}" target="_blank">
-                                    Client Login
+                                    Login
                                 </a>
                             </div>
                         </div>

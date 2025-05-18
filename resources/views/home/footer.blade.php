@@ -6,39 +6,14 @@
                     <div class="footer-detail">
                         <a id="footer_logo_image" class="f-logo" href="https://www.icmarkets.com/global">
                             
-                                <img src="https://www.icmarkets.com/assets/icons/ICM-logo-fsa.svg" alt="" class="img-fluid footer-logo-fsa" />
+                                <img src="assets/images/logo.png" alt="" class="img-fluid footer-logo-fsa" />
                             
                         </a>
-                        <p>IC Markets Global mission is to create the best trading experience for retail and institutional clients alike, allowing traders to focus more on their trading. Built by traders for traders IC Markets Global is dedicated to offering superior spreads, execution and service.</p>
+                        <p>Pinnacle Assets Trade mission is to create the best trading experience for retail and institutional clients alike, allowing traders to focus more on their trading. Built by traders for traders Pinnacle Assets Trade is dedicated to offering superior spreads, execution and service.</p>
                         
                             
-                                <ul class="social">
-                                    <li>
-                                        <a id="footer_logo_facebook_1" class="footer-logo-social-icon facebook" href="#" target="_blank">
-                                            <img class="img-fluid" src="https://www.icmarkets.com/assets/images/footer/facebook.webp" alt="">
-                                        </a>
-                                    </li>
-                                        
-                                        <li>
-                                            <a id="footer_logo_twitter_1" class="footer-logo-social-icon twitter" href="#" target="_blank">
-                                                <img class="img-fluid" src="https://www.icmarkets.com/assets/images/footer/twitter.webp" alt="">
-                                            </a>
-                                        </li>
-                                    
-                                    
-                                        <li>
-                                            <a id="footer_logo_instagram_1" class="footer-logo-social-icon instagram" href="#" target="_blank">
-                                                <img class="img-fluid" src="https://www.icmarkets.com/assets/images/footer/instagram.webp" alt="">
-                                            </a>
-                                        </li>
-                                    
-                                    <li>
-                                        <a id="footer_logo_linkedin_1" class="footer-logo-social-icon linkedin" href="#" target="_blank">
-                                            <img class="img-fluid" src="https://www.icmarkets.com/assets/images/footer/linkedin.webp" alt="">
-                                        </a>
-                                    </li>
-                                </ul>
-                                <a class="trading-view-btn" href="{{url('tradingview')}}"></a>
+                             
+                               
                             
                         
                     </div>
@@ -107,7 +82,7 @@
             </div>
             <div class="col-md-3">
                 <div class="footer-menu">
-                    <h5>About IC Markets Global?</h5>
+                    <h5>About Pinnacle Assets Trade?</h5>
                     <ul class="footer-menu-list">
                         
                             <li>
@@ -115,7 +90,7 @@
                             </li>
                             <li>
                                 <a id="footer_company_why_us_1" href="{{url('why')}}">
-                                    Why IC Markets Global
+                                    Why Pinnacle Assets Trade
                                 </a>
                             </li>
                             
@@ -148,7 +123,7 @@
                         
                             
                             <div class="d-block">
-                                <p>IC Markets Global is the trading name of Raw Trading Ltd, which is regulated by the Seychelles Financial Services Authority (FSA) with Securities Dealer’s license number SD018.</p><p><b>Risk Warning:</b> Trading Forex and CFDs carries a high level of risk to your capital and you should only trade with money you can afford to lose. Trading Forex and CFDs may not be suitable for all investors, so please ensure that you fully understand the risks involved and seek independent advice if necessary. Please read and ensure you fully understand our <a href="Risk_Disclosure_Notice_FSA.pdf" target="_blank">Risk Disclosure</a>.</p></br>
+                                <p>Pinnacle Assets Trade is the trading name of Raw Trading Ltd, which is regulated by the Seychelles Financial Services Authority (FSA) with Securities Dealer’s license number SD018.</p><p><b>Risk Warning:</b> Trading Forex and CFDs carries a high level of risk to your capital and you should only trade with money you can afford to lose. Trading Forex and CFDs may not be suitable for all investors, so please ensure that you fully understand the risks involved and seek independent advice if necessary. Please read and ensure you fully understand our <a href="Risk_Disclosure_Notice_FSA.pdf" target="_blank">Risk Disclosure</a>.</p></br>
                                 <p>You must be 18 years old, or of legal age as determined in your country. Upon registering an account with Raw Trading Ltd, you acknowledge that you are registering <u>at your own free will, without solicitation on behalf of Raw Trading Ltd.</u></p></br><p>Raw Trading Ltd does not direct its website and services to any individual in any country in which the use of its website and services are prohibited by local laws or regulations. When accessing this website from a country in which its use may or may not be prohibited, it is the user's <u>responsibility to ensure that any use of the website or services adheres to local laws or regulations</u>. Raw Trading Ltd does not affirm that the information on its website is suitable for all jurisdictions.</p></br>
                             </div>
                             <div class="d-none">
@@ -166,7 +141,7 @@
                     </div>
                 </div>
                 <div class="copyright">
-                    <p>© 2024 Raw Trading Ltd | All rights reserved.</p>
+                    <p>© 2025 Pinnacle Assets Trade | All rights reserved.</p>
                 </div>
             </div>
         </div>
@@ -204,15 +179,15 @@
                     </div>
                     <div class="col-md-5">
                         <div class="btn-flex text-end">
-                            <a class="btn btn-primary-md me-2" href="open-trading-account/live.html">
+                            <a class="btn btn-primary-md me-2" href="{{route('register')}}">
                                 Open an Account
                             </a>
                             
-                            <a class="btn btn-outline-primary-md" href="help-resources/help-centre.html">
-                                <img src="https://www.icmarkets.com/assets/icons/chat.svg">
+                            <a class="btn btn-outline-primary-md" href="{{route('login')}}">
+                                
                                 
                                     
-                                        24/7 Support
+                                        Login
                                 
                             </a>
                         </div>

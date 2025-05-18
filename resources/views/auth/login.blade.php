@@ -12,7 +12,7 @@
     <meta Http-Equiv="Pragma" Content="no-cache" />
     <meta Http-Equiv="Expires" Content="0" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <link type="image/x-icon" href="/Content/favicon.ico" rel="shortcut icon" />
+    <link type="image/x-icon" href="assets/images/logo.png" rel="shortcut icon" />
 
     <!-- Custom fonts for this template-->
     <link rel="stylesheet" href="cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -119,7 +119,7 @@
  
         <h3 class="text-center">
                 <div class="text-center mt-5 pt-3">
-                     <a href="/"> <img class="login_icm_logo" src="/Content/ICMarkets/images/Account/logo-for-dark-bg.png" alt="" /></a>
+                     <a href="/"> <img class="login_icm_logo" src="assets/images/logo.png" alt="" /></a>
                     <div class="h4 text-gray-900 mb-0">
                         Sign in
                     </div>
@@ -342,7 +342,7 @@
             <div id="main" class="container">
                 <div class="container flex loginPageHeader">
                     <div class="LogoWrp">
-                        <img id="profile-img" style="width:200px;" class="profile-img-card" src="/Content/ICMarkets/images/Account/logo-for-dark-bg.png" />
+                        <img id="profile-img" style="width:200px;" class="profile-img-card" src="assets/images/logo.png" />
                     </div>
                 </div>
             </div>

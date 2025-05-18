@@ -3,12 +3,12 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>icmarkets | Register</title>
+    <title>Pinnacleassetstrade | Register</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="register" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="/Content/favicon.ico">
+    <link rel="shortcut icon" href="assets/images/logo.png">
 
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -33,7 +33,7 @@
                             <div class="col-12 text-center">
                                 <br>
                                 <br>
-                                <a href="/" ><img src="/Content/ICMarkets/images/Account/logo-for-dark-bg.png" alt="Logo" height="80"></a>
+                                <a href="/" ><img src="assets/images/logo.png" alt="Logo" height="80"></a>
                             </div>
                             <div class="col-12 text-center">
                                 
@@ -393,7 +393,7 @@
                                     <p class="response"></p>
                                     <p>Already have an account ? <a href="{{route('login')}}" class="fw-medium text-primary"  > Sign in</a> </p>
                                     <div class="mt-4 text-center">
-                                        <p class="mb-0">By registering you agree to the icmarkets <a href="#" class="text-primary">Terms of Use</a></p>
+                                        <p class="mb-0">By registering you agree to the Pinnacleassetstrade <a href="#" class="text-primary">Terms of Use</a></p>
                                     
                                     </div>
                                 </form>
@@ -408,7 +408,7 @@
                             <p>©
                                 <script>
                                     document.write(new Date().getFullYear())
-                                </script> Powered by <i class="bx bx-check-shield text-success"></i> by icmarkets</p>
+                                </script> Powered by <i class="bx bx-check-shield text-success"></i> by Pinnacleassetstrade</p>
                         </div>
                     </div>
     

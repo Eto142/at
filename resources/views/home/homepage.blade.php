@@ -234,7 +234,7 @@
                 <div class="col-md-6">
                     <h1 class="text-white mb-4">The Raw Spread Advantage</h1>
                     
-                        <p class="fw-400 text-white-50 lead-3 mb-4">Raw Spreads are the difference you have been waiting for. Trade with spreads from 0.0 pips, no requotes, best possible prices and no restrictions. IC Markets Global is the multi-asset trading platform of choice for high volume traders, scalpers and robots.<br><br>&nbsp;</p>
+                        <p class="fw-400 text-white-50 lead-3 mb-4">Raw Spreads are the difference you have been waiting for. Trade with spreads from 0.0 pips, no requotes, best possible prices and no restrictions. Pinnacle Assets Trade is the multi-asset trading platform of choice for high volume traders, scalpers and robots.<br><br>&nbsp;</p>
                     
                     <div class="btn-flex">
                         <a class="btn btn-primary me-3" href="{{route('register')}}">Start Trading</a>
@@ -252,7 +252,7 @@
                         <div class="card steps-card pb-0 pb-md-4">
                             <h2>Spreads from 0.0 pips</h2>
                             <ul class="list">
-                                <!-- <li>IC Markets Global EURUSD Avg spread of 0.1 is one of the best in the world**</li> -->
+                                <!-- <li>Pinnacle Assets Trade EURUSD Avg spread of 0.1 is one of the best in the world**</li> -->
                                 <li>Raw spreads means really from 0.0 pips*</li>
                                 <li>Our diverse and proprietary liquidity mix keeps spreads tight 24/5</li>
                             </ul>
@@ -340,7 +340,7 @@
                                 </div>
                                 <div class="col-md-6 pt-md-4 order-0 order-md-1">
                                     <h2 class="text-white mb-4">Give your automated trading system the edge</h2>
-                                    <p class="fw-400 text-white-50 lead-3 mb-4">IC Markets Global is the one of the top choices for automated traders. Our order matching engine located in the New York Equinix NY4 data centre processes over 500,000 trades per day with over two thirds of all trades coming from automated trading systems.</p>
+                                    <p class="fw-400 text-white-50 lead-3 mb-4">Pinnacle Assets Trade is the one of the top choices for automated traders. Our order matching engine located in the New York Equinix NY4 data centre processes over 500,000 trades per day with over two thirds of all trades coming from automated trading systems.</p>
                                 </div> 
                            
                     </div>
@@ -436,7 +436,7 @@
                                 </a>
                             </h6> -->
                             <h2 class="text-white mb-4">Our strength is in the numbers<!-- Strength --></h2>
-                            <p class="fw-400 text-white lead-3 mb-4">IC Markets Global is one of the largest Forex CFD providers in the world by trading volume.</p>
+                            <p class="fw-400 text-white lead-3 mb-4">Pinnacle Assets Trade is one of the largest Forex CFD providers in the world by trading volume.</p>
                             <div class="btn-flex">
                                 <a class="btn btn-primary me-3" href="{{route('register')}}">Start Trading</a>
                                 <a class="btn btn-outline-primary" href="{{route('login')}}">Login</a>
@@ -534,49 +534,10 @@
             </div>
         </section>
         
-            <section class="mobile-cta-sec">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card mobile-cta-card">
-                                <h2 class="w-50">Trade on the go with IC Markets Global mobile app</h2>
-                                <ul class="list list-inline">
-                                    <li>Easy monitoring</li>
-                                    <li>24/7 Support</li>
-                                    <li>Multiple payment methods</li>
-                                </ul>
-                                <div class="mbl-btn-links">
-                                    <a target="_blank" href="https://apps.apple.com/au/app/ic-markets/id1552875348">
-                                        <img class="img-fluid" src="https://www.icmarkets.com/assets/images/app-store.webp" alt="">
-                                    </a>
-                                    <a target="_blank" href="https://play.google.com/store/apps/details?id=com.icmarkets.mobileapp">
-                                        <img class="img-fluid" src="https://www.icmarkets.com/assets/images/play-store.webp" alt="">
-                                    </a>
-                                </div>
-                                <div class="mobile-image">
-                                    <img src="https://www.icmarkets.com/assets/images/mobile-cta-fsa.webp" alt="" class="img-fluid">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+       
         
         
-            <section class="webinars-cta">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="webinar-card">
-                                <h4>Skill up with weekly IC Markets Global WEBINARS</h4>
-                                
-                                    <a class="btn btn-outline-primary" id="home_webinars_upcoming" target="_blank" href="{{url('web-tv')}}">Upcoming Webinars</a>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+    
         
         <section class="main-cta-sec">
             <div class="container">

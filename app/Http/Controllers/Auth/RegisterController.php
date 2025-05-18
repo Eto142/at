@@ -88,7 +88,7 @@ class RegisterController extends Controller
           ];
 
             $user_email =   $data['email'];
-            Mail::to($user_email)->send(new welcomeEmail($data));
+            // Mail::to($user_email)->send(new welcomeEmail($data));
         return $user;
     }
 }
