@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="ialsmxvxbFVMvehWybzdppDZtGxGJ4kODeqmi07p">
-    <title>icmarkets | User Dashboard</title>
+    <title>Pinnacleassetstrd| User Dashboard</title>
     <link rel="icon" href="{{asset('user/account/storage/app/public/photos/uPYDzhfavicon.png1677339254')}}" type="image/png"/>
 	
 				<!-- Fonts and icons -->
