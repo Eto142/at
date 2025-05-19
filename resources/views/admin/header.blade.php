@@ -96,7 +96,7 @@
     <!-- Logo Header -->
 <div class="logo-header" data-background-color="dark">
         <a href="/dashboard" class="logo" style="font-size: 27px; color:#fff;">
-            icmarkets
+            Pinnacleassetstrd
         </a>
     <button class="ml-auto navbar-toggler sidenav-toggler" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon">
