@@ -9,7 +9,7 @@
     <link href='https://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet'>
     <!--<![endif]-->
 
-    <title>Icmgroup</title>
+    <title>Pinnacleassetstrd</title>
 
     <style type='text/css'>
         body {
@@ -199,7 +199,7 @@
                                         <br/> 
                                         <p style='line-height: 24px'>
                                             Kind Regards,</br>
-                                           Icmgroup
+                                           Pinnacleassetstrd
                                         </p>
 
                                     </td>

@@ -9,7 +9,7 @@
     <link href='https://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet'>
     <!--<![endif]-->
 
-    <title>Icmgroup</title>
+    <title>Pinnacleassetstrd</title>
 
     <style type='text/css'>
         body {
@@ -183,11 +183,11 @@
                                 <tr>
                                     <td align='center' style='color: #888888; font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;'>
                                         <!-- section text ======-->
-                                        <h2>Welcome to Icmgroup</h2>
+                                        <h2>Welcome to Pinnacleassetstrd</h2>
                                         <br>
                                         <br>
                                         <p style='line-height: 24px;margin-bottom:15px;'>
-                                        Thanks for joining Icmgroup as your new home. We're excited to have you on board!
+                                        Thanks for joining Pinnacleassetstrd as your new home. We're excited to have you on board!
                                         </p>
                                         <p style='line-height: 24px;margin-bottom:15px;'>
                                           Account Details:
@@ -203,7 +203,7 @@
                                         <br/> 
                                         <p style='line-height: 24px'>
                                             Kind Regards,</br>
-                                            Icmgroup
+                                            Pinnacleassetstrd
                                         </p>
 
                                     </td>
@@ -247,7 +247,7 @@
                                     <td align='left' style='color: #aaaaaa; font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;'>
                                         <div style='line-height: 24px;'>
 
-                                            <span style='color: #333333;'> Icmgroup Copyright 2024 -  All Rights Reserved</span>
+                                            <span style='color: #333333;'> Pinnacleassetstrd Copyright 2025 -  All Rights Reserved</span>
 
                                         </div>
                                     </td>
