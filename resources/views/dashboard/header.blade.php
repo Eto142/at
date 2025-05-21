@@ -1110,7 +1110,11 @@
                     <div class="avatar-container">
                         <div class="avatar avatar-sm avatar-indicators avatar-online" style="border-radius: 50%; border: 3px solid rgba(224, 230, 237, 0.16);">
                         
-                                                                                                <img alt="avatar" src="{{asset('user/uploads/id/'.Auth::user()->photo)}}" class="rounded-circle">
+                                                                                               <img 
+    alt="avatar" 
+    src="{{ Auth::user()->photo ? asset('user/uploads/id/' . Auth::user()->photo) : asset('default-avatar.png') }}" 
+    class="rounded-circle">
+
                                                                 
                                                     </div>
                     </div>
