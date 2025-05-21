@@ -27,7 +27,7 @@
 
       <!-- Bot Details -->
       <div class="card-body">
-        <h2 class="card-title text-center">Level:{{ $bot->level }}</h2>
+        <h2 class="card-title text-center">{{ $bot->level }}</h2>
           <h5 class="card-title text-center">{{ $bot->name }}</h5>
         <p class="mb-1">Bot ID: <span class="text-info">{{ $bot->bot_id }}</span></p>
         <p class="mb-1">Category: <span class="text-info">{{ $bot->category }}</span></p>
