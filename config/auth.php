@@ -40,7 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'admin' => [
+        'driver' => 'session',
+        'provider' => 'admins', // make sure this matches your provider
     ],
+
+    ],
+
+   
 
     /*
     |--------------------------------------------------------------------------
@@ -65,11 +72,18 @@ return [
             'model' => App\Models\User::class,
         ],
 
+         
+    
+    'admins' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Admin::class,  // your Admin model
+    ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
     ],
+
 
     /*
     |--------------------------------------------------------------------------

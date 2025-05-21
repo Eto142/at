@@ -1237,15 +1237,15 @@
             </ul>
 </li>
 
-{{-- <!-- Livewire Component wire-end:LBthVnuYEuISwNgkAPFI -->
-                <li class="menu ">
-                    <a href="https://my.consummatetraders.com/funding/mychallenges" aria-expanded="false" class="dropdown-toggle">
-                        <div class="">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trello"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><rect x="7" y="7" width="3" height="9"></rect><rect x="14" y="7" width="3" height="5"></rect></svg>
-                            <span>My challenges</span>
-                        </div>
-                    </a>
-                </li> --}}
+
+                          <li class="menu ">
+                <a href="{{route('buybot')}}" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trello"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><rect x="7" y="7" width="3" height="9"></rect><rect x="14" y="7" width="3" height="5"></rect></svg>
+                        <span>Activate Bot</span>
+                    </div>
+                </a>
+            </li>
 
 
                 <li class="menu ">
@@ -1296,22 +1296,6 @@
                         </div>
                     </a>
                 </li>
-
-                <!--<li class="menu ">-->
-                <!--    <a href="{{url('icm-protect')}}" aria-expanded="false" class="dropdown-toggle">-->
-                <!--        <div class="">-->
-                <!--            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trello"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><rect x="7" y="7" width="3" height="9"></rect><rect x="14" y="7" width="3" height="5"></rect></svg>-->
-                <!--            <span>ICM Protect</span>-->
-                <!--        </div>-->
-                <!--    </a>-->
-                <!--</li>-->
-
-
-                
-
-
-
-
                 
 
 
@@ -1359,24 +1343,6 @@
             </li> --}}
 
 
-
-            <li class="menu ">
-                <a href="{{url('trade-tool')}}" aria-expanded="false" class="dropdown-toggle">
-                    <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trello"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><rect x="7" y="7" width="3" height="9"></rect><rect x="14" y="7" width="3" height="5"></rect></svg>
-                        <span>Trade Tools</span>
-                    </div>
-                </a>
-            </li>
-
-            <li class="menu ">
-                <a href="Trade-Investigation-form-global.pdf" aria-expanded="false" class="dropdown-toggle">
-                    <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trello"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><rect x="7" y="7" width="3" height="9"></rect><rect x="14" y="7" width="3" height="5"></rect></svg>
-                        <span>Trade Investigation Form</span>
-                    </div>
-                </a>
-            </li>
 
             
 

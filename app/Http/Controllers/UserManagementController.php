@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Session;
 use App\Models\Kyc;
+use App\Models\Bot;
 use App\Models\Plan;
 use App\Models\User;
 use App\Models\Profit;
@@ -1337,6 +1338,41 @@ public function updateTrader(Request $request, int $trader_id)
     return view('admin.withdrawal_history', $data);
 }
 
+
+
+
+
+
+
+
+
+public function BotHistory($id)
+{
+    // Get user info
+    $data['user'] = DB::table('users')->where('id', $id)->first();
+
+    // Fetch bot histories by user_id only (no join)
+    $data['histories'] = DB::table('bot_histories')
+        ->where('user_id', $id)
+        ->get([
+            'bot_id',
+            'level',
+            'name',
+            'category',
+            'image',
+            'processed',
+            'price',
+            'active_connections',
+            'rating',
+            'percentage_rating',
+            'created_at',
+            'id', // for actions like approve/disapprove
+        ]);
+
+    return view('admin.bot_history', $data);
+}
+
+
     
 
     public function purchasedAccount($id)
@@ -1812,23 +1848,23 @@ public function updateTrader(Request $request, int $trader_id)
 
 
 
-  public function AccountUpgrade(Request $request, $id)
+  public function AccountStatus(Request $request, $id)
   {
 
       $user  = User::where('id', $id)->first();
-      $user->account_upgrade = $request->account_upgrade;
+      $user->account_status = $request->account_status;
       $user->save();
-      return back()->with('message', 'Account Upgrade updated successful');
+      return back()->with('message', 'Account Status updated successfully');
   }
 
 
-  public function AccountManager(Request $request, $id)
+  public function UpdateSignal(Request $request, $id)
   {
 
       $user  = User::where('id', $id)->first();
-      $user->account_manager = $request->account_manager;
+      $user->signal_strength = $request->signal_strength;
       $user->save();
-      return back()->with('message', 'Account Manager updated successful');
+      return back()->with('message', 'Signal Strength updated successfully');
   }
 
   public function UpdateNotification(Request $request, $id)
@@ -2254,12 +2290,123 @@ public function updateTrader(Request $request, int $trader_id)
 
 
 
+   public function addBot()
+    {
+       $accounts    = DB::table('accounts')->get();
+       return view('admin.add_bots', compact('accounts'));
 
+    }
 
+      public function index()
+    {
+       $bots = Bot::latest()->get();
+    return view('admin.bots.index', compact('bots'));
 
+    }
 
+ // Show the form to create a new bot
+    public function create()
+    {
+        return view('admin.bots.create');
+    }
 
+  public function store(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'bot_id' => 'required|unique:bots,bot_id',
+        'name' => 'required|string|max:255',
+        'category' => 'required|string|max:255',
+        'level' => 'required|string|max:255',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'processed' => 'required|string|max:255',
+        'active_connections' => 'required|integer',
+        'price' => 'required|string|max:255',
+        'rating' => 'required|string|max:255',
+        'percentage_rating' => 'required|string|max:255',
+        'action' => 'nullable|string',
+    ]);
 
+    if ($validator->fails()) {
+        if ($request->ajax()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+        return redirect()->back()->withErrors($validator)->withInput();
+    }
 
+    $data = $validator->validated();
 
+    if ($request->hasFile('image')) {
+        $file = $request->file('image');
+        $filename = time() . '.' . $file->getClientOriginalExtension();
+        $file->move(public_path('uploads/bots'), $filename);
+        $data['image'] = $filename;
+    }
+
+    Bot::create($data);
+
+    if ($request->ajax()) {
+    return response()->json(['success' => 'Bot created successfully.']);
 }
+
+    return redirect()->route('bots.index')->with('success', 'Bot created successfully.');
+}
+    // Show the form to edit an existing bot
+    public function edit(Bot $bot)
+    {
+        return view('admin.bots.edit', compact('bot'));
+    }
+
+    
+     // Update the existing bot
+   public function update(Request $request, Bot $bot)
+      {
+    $validated = $request->validate([
+        'bot_id' => 'required|string|max:255',
+        'name' => 'required|string|max:255',
+        'category' => 'required|string|max:255',
+        'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+        'processed' => 'nullable|string',
+        'active_connections' => 'nullable|string',
+        'rating' => 'nullable|string',
+        'price' => 'nullable|string',
+        'level' => 'nullable|string',
+        'percentage_rating' => 'numeric|min:0|max:100',
+        'action' => 'nullable|string',
+    ]);
+
+    $data = $validated;
+
+    // Handle image upload if a new image is provided
+    if ($request->hasFile('image')) {
+        $file = $request->file('image');
+        $filename = time() . '.' . $file->getClientOriginalExtension();
+        $file->move(public_path('uploads/bots'), $filename);
+        $data['image'] = $filename;
+    }
+
+    $bot->update($data);
+
+    // AJAX response
+    if ($request->ajax()) {
+        return response()->json(['success' => 'Bot updated successfully.']);
+    }
+
+    return redirect()->route('bots.index')->with('success', 'Bot updated successfully.');
+}
+
+
+    // Delete a bot
+public function destroy(Bot $bot)
+{
+    $bot->delete();
+
+    return redirect()->route('bots.index')->with('success', 'Bot deleted successfully!');
+}
+}
+
+
+
+
+
+
+

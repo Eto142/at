@@ -22,17 +22,18 @@
                                               Actions
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-lg-right">
-                                                <a class="dropdown-item" href="{{route('login.activity',$profileData->id)}}">Login Activity</a>
+                                                {{-- <a class="dropdown-item" href="{{route('login.activity',$profileData->id)}}">Login Activity</a> --}}
                                                 <a class="dropdown-item" href="{{route('deposit.history',$profileData->id)}}">Deposit History</a>
                                                 <a class="dropdown-item" href="{{route('transfer.history',$profileData->id)}}">Transfer History</a>
                                                 <a class="dropdown-item" href="{{route('withdrawal.history',$profileData->id)}}">Withdrawal History</a>
+                                                <a class="dropdown-item" href="{{route('bot.history',$profileData->id)}}">Bot History</a>
                                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#accountSuspension">Account Suspension</a>                                                                                                                                                
                                                 <a href="#"  data-toggle="modal" data-target="#topupModal" class="dropdown-item">Account Funding</a>
-                                                <a href="#"  data-toggle="modal" data-target="#withdrawalsettings" class="dropdown-item">Withdrawal Settings</a>
+                                                {{-- <a href="#"  data-toggle="modal" data-target="#withdrawalsettings" class="dropdown-item">Withdrawal Settings</a> --}}
                                                 <a href="#"  data-toggle="modal" data-target="#accountverificationModal" class="dropdown-item">Account Verification</a>
                                                 <a href="#" data-toggle="modal" data-target="#clearacctModal" class="dropdown-item">Clear Account</a>
-                                                <a href="#" data-toggle="modal" data-target="#AccountManager" class="dropdown-item">Account Manager's Name</a>
-                                                <a href="#" data-toggle="modal" data-target="#AccountUpgrade" class="dropdown-item">Account Upgrade</a>
+                                                <a href="#" data-toggle="modal" data-target="#SignalStrength" class="dropdown-item">Update signal</a>
+                                                <a href="#" data-toggle="modal" data-target="#AccountStatus" class="dropdown-item">Account Status</a>
                                                 <a href="#" data-toggle="modal" data-target="#sendmailtooneuserModal" class="dropdown-item">Send Email</a>
                                                 {{-- <a href="#" data-toggle="modal" data-target="#switchuserModal"  class="dropdown-item text-success">Gain Access</a> --}}
                                                 <a href="#" data-toggle="modal" data-target="#deleteModal" class="dropdown-item text-danger">Delete {{$profileData->name}}</a>
@@ -71,7 +72,7 @@
 
                                 <div class="col-md-3">
                                     <h5>User Account Status</h5>
-                                                                        <span class="badge badge-success">{{$profileData->account_upgrade}}</span>
+                                                                        <span class="badge badge-success">{{$profileData->account_status}}</span>
                                                                     </div>
                                 <div class="col-md-3">
                                     <h5>Purchased. Account</h5>
@@ -97,10 +98,12 @@
                                     <span class="badge badge-success">Verified</span>@endif
                                 </div>
                                 <div class="col-md-3">
-                                    <h5>Account Manager</h5>
-                                                                        <span class="badge badge-primary">{{$profileData->account_manager}}</span>
+                                    <h5>Signal Strength</h5>
+                                                                        <span class="badge badge-primary">{{$profileData->signal_strength}}</span>
                                                                     </div>
                             </div>
+
+                            
                             <div class="mt-3 row text-light">
                                 <div class="col-md-12">
                                     <h5>USER INFORMATION</h5>
@@ -204,20 +207,20 @@
 
 
 
-    <div id="AccountManager" class="modal fade" role="dialog">
+    <div id="SignalStrength" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header bg-dark">
-                    <h4 class="modal-title text-light">Account Manager Name: {{$profileData->account_manager}}.</strong></h4>
+                    <h4 class="modal-title text-light">Signal Strength: {{$profileData->signal_strength}}</strong></h4>
                     <button type="button" class="close text-light" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body bg-dark">
-                <form action="{{ route('account.manager',$profileData->id)}}" method ="POST">
+                <form action="{{ route('signal.strength',$profileData->id)}}" method ="POST">
 											{{ csrf_field()}}  
                                        
                         <div class="form-group">
-                            <input class="form-control bg-dark text-light" placeholder="{{$profileData->account_manager}}" type="text" name="account_manager">
+                            <input class="form-control bg-dark text-light" placeholder="{{$profileData->signal_strength}}" type="text" name="signal_strength">
                         </div>
                        
                         
@@ -232,19 +235,19 @@
 
 
 
-    <div id="AccountUpgrade" class="modal fade" role="dialog">
+    <div id="AccountStatus" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header bg-dark">
-                    <h4 class="modal-title text-light">Account Status: {{$profileData->account_upgrade}} .</strong></h4>
+                    <h4 class="modal-title text-light">Account Status: {{$profileData->account_status}} .</strong></h4>
                     <button type="button" class="close text-light" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body bg-dark">
-                <form action="{{ route('account.upgrade',$profileData->id)}}" method ="POST">
+                <form action="{{ route('account.status',$profileData->id)}}" method ="POST">
 											{{ csrf_field()}}                       
                         <div class="form-group">
-                            <input class="form-control bg-dark text-light" placeholder="{{$profileData->account_upgrade}}" type="text" name="account_upgrade" required>
+                            <input class="form-control bg-dark text-light" placeholder="{{$profileData->account_status}}" type="text" name="account_status" required>
                         </div>
                        
                         

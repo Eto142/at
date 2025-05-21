@@ -418,15 +418,43 @@
             Total Bonus
           </div>
           <div class="card-value">${{$bonus}}</div>
-          <!-- <span class="card-change negative">
-            <i class="fas fa-arrow-down me-1"></i> 2.3%
-          </span> -->
           <div class="card-icon">
             <i class="fas fa-gift"></i>
           </div>
           <div class="card-progress" style="width: 30%"></div>
         </div>
       </div>
+      <div class="col-12 col-md-6 col-lg-6">
+  <div class="card-box card-account">
+    <div class="card-label">
+      <i class="fas fa-user-check me-2"></i>
+      Account Status
+    </div>
+    <div class="card-value">{{Auth::user()->account_status}}</div>
+    <div class="card-icon">
+      <i class="fas fa-user-check"></i>
+    </div>
+    <div class="card-progress" style="width: 100%"></div>
+  </div>
+</div>
+
+
+      <div class="col-12 col-md-6 col-lg-6">
+  <div class="card-box card-signal">
+    <div class="card-label">
+      <i class="fas fa-signal me-2"></i>
+      Signal Strength
+    </div>
+    <div class="card-value">{{Auth::user()->signal_strength}}%</div>
+    <div class="card-icon">
+      <i class="fas fa-signal"></i>
+    </div>
+    <div class="card-progress" style="width: 75%"></div>
+  </div>
+</div>
+
+
+      
       
       <div class="col-12 col-md-6 col-lg-6">
         <div class="card-box card-withdraw">
@@ -446,7 +474,7 @@
       </div>
     </div>
     
-    <div class="row g-4">
+    {{-- <div class="row g-4">
       <div class="col-12 col-lg-8">
         <div class="card-box" style="min-height: 300px;">
           <div class="card-label">
@@ -472,7 +500,7 @@
             <span class="summary-value text-success">Active</span>
           </div>
           
-          <div class="summary-item">
+          {{-- <div class="summary-item">
             <span class="summary-label">Last Deposit</span>
             <span class="summary-value">$1,500.00</span>
           </div>
@@ -481,12 +509,14 @@
             <span class="summary-label">Last Withdrawal</span>
             <span class="summary-value">$300.00</span>
           </div>
-          
+           --}}
           <!-- <div class="summary-item">
             <span class="summary-label">Active Investments</span>
             <span class="summary-value">3</span>
           </div>
            -->
+           <div class="col-12 col-lg-4">
+        <div class="summary-card">
           <div class="summary-item">
             <span class="summary-label">Account Age</span>
             <span class="summary-value">{{ Auth::user()->created_at->diffForHumans() }}
@@ -497,7 +527,7 @@
             <i class="fas fa-download me-2"></i>Download Statement
           </button> -->
         </div>
-      </div>
+      </div> 
     </div>
   </div>
 </body>

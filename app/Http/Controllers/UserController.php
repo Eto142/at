@@ -6,6 +6,8 @@ use DB;
 use App\Models\Kyc;
 use App\Models\Plan;
 use App\Models\User;
+use App\Models\Bot;
+use App\Models\BotHistory;
 use App\Models\Profit;
 use GuzzleHttp\Client;
 use App\Models\Account;
@@ -90,10 +92,10 @@ class UserController extends Controller
             if (Auth::user()->usertype == '0') {
 
 
-                    $client = new Client();
-$response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
-$data = json_decode($response->getBody(), true);
-$price = $data['bitcoin']['usd'];
+//                     $client = new Client();
+// $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
+// $data = json_decode($response->getBody(), true);
+// $price = $data['bitcoin']['usd'];
 
                     
                                       
@@ -608,16 +610,80 @@ $price = $data['bitcoin']['usd'];
     public function Kyc()
     {
 
-        // $client = new Client();
-        // $response = $client->get('https://api.coindesk.com/v1/bpi/currentprice/BTC.json');
-        // $data = json_decode($response->getBody(), true);
-        // $price = $data['bpi']['USD']['rate_float'];
 
         $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
         $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
         $data['user_balance'] =  $data['credit'] - $data['debit'];
         // $data['btc_balance'] = $data['user_balance'] / $price;
         return view('dashboard.kyc', $data);
+    }
+
+
+
+public function connectBot(Request $request)
+{
+    // Step 1: Validate Request
+    $validated = $request->validate([
+        'bot_id'    => 'required|string',
+        'name'      => 'required|string',
+        // 'level'      => 'required|string',
+        'category'  => 'required|string',
+        'price'     => 'required|numeric',
+        'rating'    => 'nullable|numeric',
+    ]);
+
+    // Step 2: Get Authenticated User
+    $user = Auth::user();
+
+    // Step 3: Calculate Real-Time Balance
+    $credit = Transaction::where('user_id', $user->id)->where('status', 1)->sum('credit');
+    $debit = Transaction::where('user_id', $user->id)->where('status', 1)->sum('debit');
+    $balance = $credit - $debit;
+
+    // Step 4: Insufficient Balance Check
+    if ($balance < $validated['price']) {
+        return back()->with('error', '❌ Your balance is insufficient to connect to this bot.');
+    }
+
+    // Step 5: Generate Unique Transaction ID
+    $transaction_id = rand(10000000, 99999999);
+
+    // Step 6: Create Bot History
+    BotHistory::create([
+        'user_id'        => $user->id,
+        'bot_id'         => $validated['bot_id'],
+        'name'           => $validated['name'],
+        'category'       => $validated['category'],
+        'price'          => $validated['price'],
+        // 'level'          => $validated['level'],
+        'rating'         => $validated['rating'] ?? null,
+        'transaction_id' => $transaction_id,
+    ]);
+
+    // Step 7: Log Debit Transaction
+    Transaction::create([
+        'user_id'          => $user->id,
+        'transaction_id'   => $transaction_id,
+        'debit'            => $validated['price'],
+        'credit'           => 0,
+        'transaction_type' => 'Debit',
+        'transaction'      => 'debit',
+        'type'             => 'Bot Connection',
+        'status'           => 1,
+        'description'      => 'Connected to bot: ' . $validated['name'],
+    ]);
+
+    return back()->with('success', '✅ Bot connected successfully!');
+}
+
+    
+    public function Buybot()
+    {
+        $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
+        $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
+        $data['user_balance'] =  $data['credit'] - $data['debit'];
+        $data['bot']  = Bot::get();
+        return view('dashboard.bot', $data);
     }
 
 
@@ -1337,68 +1403,12 @@ public function Subscribe(Request $request)
     //buy plans
     public function buyPlans(Request $request)
     {
-        // $data['deposit'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->sum('amount');
-        // $data['withdrawal'] = Withdrawal::where('user_id', Auth::user()->id)->sum('amount');
-        // $data['addprofit'] = Profit::where('user_id', Auth::user()->id)->sum('amount');
-        // $data['debitprofit'] = Debitprofit::where('user_id', Auth::user()->id)->sum('amount');
-        // $data['profit'] = $data['addprofit'] - $data['debitprofit'];
-        // $data['earning'] = Earning::where('user_id', Auth::user()->id)->sum('amount');
-        // $data['plan'] = Plan::where('user_id', Auth::user()->id)->sum('amount');
-        // $data['referral'] = Refferal::where('user_id', Auth::user()->id)->sum('amount');
-        // $data['balance'] = $data['profit'] + $data['deposit'] + $data['earning'] + $data['referral'] - $data['withdrawal'] - $data['plan'];
-       
-       
-        // $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
-        // $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
-        // $data['user_balance'] =  $data['credit'] - $data['debit'];
-
+        
         $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
         $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
         // $data['user_balance'] =  $data['credit'] - $data['debit'];
         // $data['btc_balance'] = $data['user_balance'] / $price;
 
-        $data['XRP'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'XRP')  ->sum('amount'); 
-        $data['user_add_XRP'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'XRP')  ->sum('credit');
-        $data['user_debit_XRP'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'XRP')  ->sum('debit');                
-        $data['XRP'] = $data['XRP'] + $data['user_add_XRP'] -  $data['user_debit_XRP'];
-
-
-        $data['BNB'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'BNB')  ->sum('amount'); 
-        $data['user_add_BNB'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'BNB')  ->sum('credit');
-        $data['user_debit_BNB'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'BNB')  ->sum('debit');                
-        $data['BNB'] = $data['BNB'] + $data['user_add_BNB'] -  $data['user_debit_BNB'];
-        
-        $data['solana'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'Solana')  ->sum('amount'); 
-        $data['user_add_solana'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Solana')  ->sum('credit');
-        $data['user_debit_solana'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Solana')  ->sum('debit');                
-        $data['solana'] = $data['solana'] + $data['user_add_solana'] -  $data['user_debit_solana'];
-        
-        $data['litecoin'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'Litecoin')  ->sum('amount'); 
-        $data['user_add_litecoin'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Litecoin')  ->sum('credit');
-        $data['user_debit_litecoin'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Litecoin')  ->sum('debit');                
-        $data['ilitecoin'] = $data['litecoin'] + $data['user_add_litecoin'] -  $data['user_debit_litecoin'];
-
-
-       
-        $data['usdt'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'Usdt')  ->sum('amount'); 
-        $data['user_add_usdt'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Usdt')  ->sum('credit');
-        $data['user_debit_usdt'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Usdt')  ->sum('debit');                
-        $data['usdt'] = $data['usdt'] + $data['user_add_usdt'] -  $data['user_debit_usdt'];
-
-
-
-        $data['bitcoin'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'bitcoin')  ->sum('amount'); 
-        $data['user_add_bitcoin'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Bitcoin')  ->sum('credit');
-        $data['user_debit_bitcoin'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Bitcoin')  ->sum('debit');                
-        $data['bitcoin'] = $data['bitcoin'] + $data['user_add_bitcoin'] -  $data['user_debit_bitcoin'];
-
-
-
-        $data['ethereum'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->where('payment_method', 'Ethereum')  ->sum('amount'); 
-        $data['user_add_ethereum'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Ethereum')  ->sum('credit');
-        $data['user_debit_ethereum'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->where('cryptocurrency', 'Ethereum')  ->sum('debit');                
-        $data['ethereum'] = $data['ethereum'] + $data['user_add_ethereum'] -  $data['user_debit_ethereum'];
-        
         $data['deposit'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->sum('amount');
         $data['withdrawal'] = Withdrawal::where('user_id', Auth::user()->id)->sum('amount');
         $data['addprofit'] = Profit::where('user_id', Auth::user()->id)->sum('amount');
