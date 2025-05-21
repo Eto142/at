@@ -1219,7 +1219,7 @@
                 </a>
             </li>
                         
-                <li wire:id="LBthVnuYEuISwNgkAPFI" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;LBthVnuYEuISwNgkAPFI&quot;,&quot;name&quot;:&quot;components.funding.menu-periods.menu-periods-component&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;home&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;b8ffab4a&quot;,&quot;data&quot;:{&quot;menu_active&quot;:&quot;home&quot;,&quot;activeMenu&quot;:false},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;bc94e6339aa18a2a81c6f942dabb7ca4c249bff4b7d74b3c769e004c9f9ba42f&quot;}}" class="menu ">
+                {{-- <li wire:id="LBthVnuYEuISwNgkAPFI" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;LBthVnuYEuISwNgkAPFI&quot;,&quot;name&quot;:&quot;components.funding.menu-periods.menu-periods-component&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;home&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;b8ffab4a&quot;,&quot;data&quot;:{&quot;menu_active&quot;:&quot;home&quot;,&quot;activeMenu&quot;:false},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;bc94e6339aa18a2a81c6f942dabb7ca4c249bff4b7d74b3c769e004c9f9ba42f&quot;}}" class="menu ">
     <a href="#FnProducts" data-bs-toggle="collapse" aria-expanded=" false " class="dropdown-toggle">
         <div class="">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
@@ -1235,7 +1235,7 @@
             </li>
                    
             </ul>
-</li>
+</li> --}}
 
 
                           <li class="menu ">
@@ -1317,7 +1317,7 @@
                         <a href="{{url('/accounthistory')}}"> Transaction history </a>
                     </li>
                                         <li class="">
-                        <a href="{{url('/purchasehistory')}}"> Purchase History </a>
+                        <a href="{{url('/bothistory')}}"> Bot History </a>
                     </li>
                                     </ul>
             </li>
@@ -1356,14 +1356,14 @@
                 </a>
             </li>
                       
-            <li class="menu ">
+            {{-- <li class="menu ">
                 <a href="{{url('legal')}}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clipboard"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
                         <span>Legal Documents</span>
                     </div>
                 </a>
-            </li>
+            </li> --}}
 
             
             <li class="menu ">

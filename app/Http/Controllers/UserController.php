@@ -780,6 +780,27 @@ $price = $data['bitcoin']['usd'];
 
 
 
+  public function Bothistory()
+    {
+
+//        $client = new Client();
+// $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
+// $data = json_decode($response->getBody(), true);
+// $price = $data['bitcoin']['usd'];
+
+        $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
+        $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
+        $data['user_balance'] =  $data['credit'] - $data['debit'];
+        // $data['btc_balance'] = $data['user_balance'] / $price;
+        $data['deposit'] =  Deposit::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
+        $data['withdrawal'] =  Withdrawal::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
+        $data['bot'] =   BotHistory::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
+
+        return view('dashboard.bot-history', $data);
+    }
+
+
+
     public function purchasehistory()
     {
 

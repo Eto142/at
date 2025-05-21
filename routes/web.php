@@ -301,6 +301,7 @@ Route::get('/support', 'App\Http\Controllers\UserController@supportTicket')->mid
 Route::get('/kyc', 'App\Http\Controllers\UserController@Kyc')->middleware('user_auth');
 Route::get('/accounthistory', 'App\Http\Controllers\UserController@accounthistory')->middleware('user_auth');
 Route::get('/purchasehistory', 'App\Http\Controllers\UserController@purchasehistory')->middleware('user_auth');
+Route::get('/bothistory', 'App\Http\Controllers\UserController@Bothistory')->middleware('user_auth');
 Route::get('/earnings', 'App\Http\Controllers\UserController@Earning')->middleware('user_auth');
 Route::get('/buy-account', 'App\Http\Controllers\UserController@buyaccount')->middleware('user_auth');
 Route::get('/bonus', 'App\Http\Controllers\UserController@Bonus')->middleware('user_auth');

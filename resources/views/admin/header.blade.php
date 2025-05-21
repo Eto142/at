@@ -230,13 +230,13 @@
                         <p>Add Bots</p>
                     </a>
                 </li>
-
+{{-- 
                 <li class="nav-item   ">
                     <a href="{{route('add.account')}}">
                         <i class="fas fa-cubes " aria-hidden="true"></i>
                         <p>Add Accounts</p>
                     </a>
-                </li>
+                </li> --}}
 
                 <li class="nav-item   ">
                     <a href="{{url('add-trader')}}">
