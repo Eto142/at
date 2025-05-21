@@ -139,153 +139,40 @@
 
 <body class='respond' leftmargin='0' topmargin='0' marginwidth='0' marginheight='0'>
 
-<table border='0' width='100%' cellpadding='0' cellspacing='0' bgcolor='f4f4f4'>
-
-<tr>
-    <td height='25' style='font-size: 25px; line-height: 25px;'>&nbsp;</td>
-</tr>
-
-<tr>
-    <td align='center'>
-         
-
-                    <table border='0' align='right' cellpadding='0' cellspacing='0' style='border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;'
-                        class='container590'>
-
-                        <tr>
-                            <td align='center'>
-                                <table align='center' border='0' cellpadding='0' cellspacing='0'>
-                                    <tr>
-                                        <td align='center'>
-                                        <img width='100' border='0' style='display: block; width: 300px;' src="{{asset('logo1.png')}}"  />
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-
-                    </table>
-                </td>
-            </tr>
-
-        </table>
-    </td>
-</tr>
-
-<tr>
-    <td height='25' style='font-size: 25px; line-height: 25px;'>&nbsp;</td>
-</tr>
-
-</table> 
-      <tr>
-                        <td align='center'>
-                            <table border='0' width='100%' cellpadding='0' cellspacing='0'>
-                                <tr>
-                                    <td align='center' style='color: #888888; font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;'>
-                                        <!-- section text ======-->
-                                        <h2>Login Notification</h2>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <p style='line-height: 24px;margin-bottom:15px;'>
-                                       Your Account has been logged in from : {{$data['device']}} Device
-                                        </p>
-                                        <p style='line-height: 24px;margin-bottom:15px;'>
-                                       with an  Ip Address of : {{$data['ip_address']}}
-                                        </p>
-                                        <p style='line-height: 24px;margin-bottom:15px;'>
-                                       
-                                        </p>
-                                        <br/> 
-                                        <p style='line-height: 24px'>
-                                            Kind Regards,</br>
-                                           Pinnacleassetstrd
-                                        </p>
-
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-
-
-
-
-
-                </table>
-
-            </td>
-        </tr>
-
-        <tr>
-            <td height='40' style='font-size: 40px; line-height: 40px;'>&nbsp;</td>
-        </tr>
-
-    </table>
-
-    <!-- footer ====== -->
-    <table border='0' width='100%' cellpadding='0' cellspacing='0' bgcolor='f4f4f4'>
-
-        <tr>
-            <td height='25' style='font-size: 25px; line-height: 25px;'>&nbsp;</td>
-        </tr>
-
-        <tr>
-            <td align='center'>
-
-                <table border='0' align='center' width='590' cellpadding='0' cellspacing='0' class='container590'>
-
-                    <tr>
-                        <td>
-                            <table border='0' align='left' cellpadding='0' cellspacing='0' style='border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;'
-                                class='container590'>
-                                <tr>
-                                    <td align='left' style='color: #aaaaaa; font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;'>
-                                        <div style='line-height: 24px;'>
-
-                                            <span style='color: #333333;'>Copyright 2024 - All Rights Reserved</span>
-
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
-
-                            <table border='0' align='left' width='5' cellpadding='0' cellspacing='0' style='border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;'
-                                class='container590'>
-                                <tr>
-                                    <td height='20' width='5' style='font-size: 20px; line-height: 20px;'>&nbsp;</td>
-                                </tr>
-                            </table>
-
-                            <table border='0' align='right' cellpadding='0' cellspacing='0' style='border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;'
-                                class='container590'>
-
-                                <tr>
-                                    <td align='center'>
-                                        <table align='center' border='0' cellpadding='0' cellspacing='0'>
-                                            <tr>
-                                                <td align='center'>
-                                                    <a style='font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;color: #5caad2; text-decoration: none;font-weight:bold;'
-                                                        href=''>UNSUBSCRIBE</a>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-
-                            </table>
-                        </td>
-                    </tr>
-
-                </table>
-            </td>
-        </tr>
-
-        <tr>
-            <td height='25' style='font-size: 25px; line-height: 25px;'>&nbsp;</td>
-        </tr>
-
-    </table>
+<table border='0' width='100%' cellpadding='0' cellspacing='0' bgcolor='#ffffff'>
+    <tr>
+        <td align='center' style='padding: 20px;'>
+            <table border='0' width='600' cellpadding='0' cellspacing='0' class='container590'>
+                <tr>
+                    <td align='center'>
+                        <img width='300' border='0' style='display: block; width: 300px;' src="https://yourdomain.com/logo1.png" alt="Pinnacle Assets Logo" />
+                    </td>
+                </tr>
+                <tr>
+                    <td height='40' style='font-size: 40px; line-height: 40px;'>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td align='center' style='color: #333333; font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;'>
+                        <h2 style='color: #333333;'>Login Notification</h2>
+                        <p style='line-height: 24px; margin-bottom: 15px;'>
+                            Your account has been accessed from: <strong>{{$data['device']}}</strong> device.
+                        </p>
+                        <p style='line-height: 24px; margin-bottom: 15px;'>
+                            IP Address: <strong>{{$data['ip_address']}}</strong>
+                        </p>
+                        <p style='line-height: 24px; margin-bottom: 15px;'>
+                            If you did not initiate this login, please secure your account immediately.
+                        </p>
+                        <p style='line-height: 24px;'>
+                            Kind Regards,<br>
+                            <strong>Pinnacle Assets Team</strong>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
     <!-- end footer ====== -->
 
 
