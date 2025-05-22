@@ -783,10 +783,6 @@ $price = $data['bitcoin']['usd'];
   public function Bothistory()
     {
 
-//        $client = new Client();
-// $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
-// $data = json_decode($response->getBody(), true);
-// $price = $data['bitcoin']['usd'];
 
         $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
         $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
@@ -1101,7 +1097,7 @@ $price = $data['bitcoin']['usd'];
         // $data['xrp_amount'] = $amount / $xrpPrice;
         // $data['bnb_amount'] = $amount / $bnbPrice;
         $data['item'] = $item;
-        $data['payment'] = DB::table('users')->where('id', '4')->get();
+        $data['payment'] = DB::table('admins')->where('id', '1')->get();
 
         if ($item == 'Bank') {
             return view('dashboard.bank', $data);

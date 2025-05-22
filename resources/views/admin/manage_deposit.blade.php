@@ -49,10 +49,10 @@
 																							</td> 
 											<td>{{ \Carbon\Carbon::parse($dep->created_at)->format('D, M j, Y g:i A') }}</td> 
 											<td> 
-												<a href="{{url('view-deposit/'.$dep->id)}}" class="btn btn-light btn-sm m-1" title="View payment screenshot">
+												<a href="{{ route('admin.view.deposit', $dep->id) }}" class="btn btn-light btn-sm m-1" title="View payment screenshot">
 													<i class="fa fa-eye"></i>
 												</a>
-												<a href="{{url('delete-deposit/'.$dep->id)}}" class="m-1 btn btn-danger btn-sm">Delete</a> 
+												<a href="{{route('admin.delete.deposit',$dep->id)}}" class="m-1 btn btn-danger btn-sm">Delete</a> 
 												@if($dep->status==='0')
 												<a class="btn btn-primary btn-sm" href="{{url('process-deposit/'.$dep->id)}}">Process</a>
 												@endif

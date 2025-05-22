@@ -10,7 +10,7 @@
 					    <h1 class="title1 text-light d-inline">{{$user->name}} Withdrawal History</h1>
                         <div class="d-inline">
 							<div class="float-right btn-group">
-								<a class="btn btn-primary btn-sm" href="{{route('back')}}"> <i class="fa fa-arrow-left"></i> back</a>
+								<a class="btn btn-primary btn-sm" href="{{route('admin.back')}}"> <i class="fa fa-arrow-left"></i> back</a>
 							</div>
 						</div>
 					</div>
@@ -69,9 +69,9 @@
 									
 
                                         @if($withdrawal->status=='1')
-                                   <td><a type="submit" class="btn btn-danger" href="{{route('disapprove.withdrawal',$withdrawal->id)}}">Disapprove</a></td> 
+                                   <td><a type="submit" class="btn btn-danger" href="{{route('admin.disapprove.withdrawal',$withdrawal->id)}}">Disapprove</a></td> 
 				                        @elseif($withdrawal->status=='0')
-				                   <td><a type="submit" class="btn btn-primary"  href="{{ route('approve.withdrawal', ['id' => $withdrawal->id, 'amount' => $withdrawal->amount, 'user_id' => $user->id]) }}" >Approve</a></td> 
+				                   <td><a type="submit" class="btn btn-primary"  href="{{ route('admin.approve.withdrawal', ['id' => $withdrawal->id, 'amount' => $withdrawal->amount, 'user_id' => $user->id]) }}" >Approve</a></td> 
 				                         @endif
 				                         
 				                         

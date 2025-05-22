@@ -137,7 +137,7 @@ $(document).ready(function () {
 
                 // Optional: reload or redirect
                 setTimeout(() => {
-                    window.location.href = "{{ route('bots.index') }}";
+                    window.location.href = "{{ route('admin.bots.index') }}";
                 }, 3000);
             },
             error: function (xhr) {

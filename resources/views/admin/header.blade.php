@@ -96,7 +96,7 @@
     <!-- Logo Header -->
 <div class="logo-header" data-background-color="dark">
         <a href="/dashboard" class="logo" style="font-size: 27px; color:#fff;">
-            Pinnacleassetstrd
+            Pinnacleassets
         </a>
     <button class="ml-auto navbar-toggler sidenav-toggler" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon">
@@ -211,21 +211,21 @@
            
             <ul class="nav nav-primary">
                 <li class="nav-item active">
-                    <a href="/dashboard">
+                    <a href="{{route('admin.dashboard')}}">
                         <i class="fas fa-home"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                                     
                 <li class="nav-item   ">
-                    <a href="{{route('wallet')}}">
+                    <a href="{{route('admin.wallet')}}">
                         <i class="fas fa-cubes " aria-hidden="true"></i>
                         <p>Add your Wallet</p>
                     </a>
                 </li>
 
                 <li class="nav-item   ">
-                    <a href="{{route('bots.index')}}">
+                    <a href="{{route('admin.bots.index')}}">
                         <i class="fas fa-cubes " aria-hidden="true"></i>
                         <p>Add Bots</p>
                     </a>
@@ -239,7 +239,7 @@
                 </li> --}}
 
                 <li class="nav-item   ">
-                    <a href="{{url('add-trader')}}">
+                    <a href="{{route('admin.add-trader')}}">
                         <i class="fas fa-cubes " aria-hidden="true"></i>
                         <p>Add Copy Traders</p>
                     </a>
@@ -254,21 +254,21 @@
                 
                
                 <li class="nav-item    ">
-                    <a href="{{url('manage-users')}}">
+                    <a href="{{route('admin.manage.users')}}">
                         <i class="fa fa-user-circle" aria-hidden="true"></i>
                         <p>Total Users</p>
                     </a>
                 </li>
 
                 <li class="nav-item   ">
-                    <a href="{{url('manage-deposit')}}">
+                    <a href="{{route('admin.manage-deposit')}}">
                         <i class="fa fa-download" aria-hidden="true"></i>
                         <p>Manage Deposits</p>
                     </a>
                 </li>
 
                 <li class="nav-item    ">
-                    <a href="{{url('manage-withdrawal')}}">
+                    <a href="{{route('admin.manage-withdrawal')}}">
                         <i class="fa fa-arrow-alt-circle-up" aria-hidden="true"></i>
                         <p>Manage Withdrawal</p>
                     </a>

@@ -37,7 +37,7 @@
 							@endif
 
 
-							<form action="{{ route('update.traders',$editTraders->id) }}" method="post"
+							<form action="{{ route('admin.update.traders',$editTraders->id) }}" method="post"
 								enctype="multipart/form-data">
 								@csrf
 

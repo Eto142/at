@@ -14,7 +14,7 @@
 			<div class="card-body">
 			  <p class="card-description">
 
-                  <form method="post" action="{{route('update-eth')}}" enctype="multipart/form-data">
+                  <form method="post" action="{{route('admin.update-eth')}}" enctype="multipart/form-data">
                                      @csrf
                                      
                                      @if(session('status'))

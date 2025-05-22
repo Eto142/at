@@ -1,5 +1,5 @@
 <div class="footer w3-white" >
-<div class="w3-bar w3-white">
+{{-- <div class="w3-bar w3-white">
   <center> 
   <table>
         <tr>
@@ -26,11 +26,14 @@
             
         </tr>
         </table>
-        </center>
+        </center> 
         
 
 </div>
-</div></div></div>
+
+</div>
+--}}
+</div></div>
 
 					
 			

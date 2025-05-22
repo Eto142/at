@@ -7,7 +7,7 @@
 <div class="alert alert-success mb-2">{{session('message')}}</div>
 @endif
 					<div class="mt-2 mb-4">
-					    <h1 class="title1 text-light d-inline">{{$user->name}} login activities</h1>
+					    <h1 class="title1 text-light d-inline">{{$user->name}} Deposit History</h1>
                         <div class="d-inline">
 							<div class="float-right btn-group">
 								<a class="btn btn-primary btn-sm" href=""> <i class="fa fa-arrow-left"></i> back</a>
@@ -52,9 +52,9 @@
 									
 
                                         @if($deposit->status=='1')
-                                   <td><a type="submit" class="btn btn-danger" href="{{route('disapprove.deposit',$deposit->id)}}">Disapprove</a></td> 
+                                   <td><a type="submit" class="btn btn-danger" href="{{route('admin.disapprove.deposit',$deposit->id)}} ">Disapprove</a></td> 
 				                        @elseif($deposit->status=='0')
-				                   <td><a type="submit" class="btn btn-primary"  href="{{ route('approve.deposit', ['id' => $deposit->id, 'amount' => $deposit->amount, 'user_id' => $user->id]) }}">Approve</a></td> 
+				                   <td><a type="submit" class="btn btn-primary"  href="{{ route('admin.approve.deposit', ['id' => $deposit->id, 'amount' => $deposit->amount, 'user_id' => $user->id]) }}">Approve</a></td> 
 				                         @endif
                                      
                                          </tr> 

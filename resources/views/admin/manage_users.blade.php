@@ -29,7 +29,7 @@
 										</div>
 										<div class="modal-body bg-dark">
 											<div>
-											<form role="form" method="post" action="{{ route('add.user') }}">
+											<form role="form" method="post" action="{{ route('admin.add.user') }}">
                                          {{ csrf_field()}}	
 																						<div class="form-row">
 														<div class="form-group col-md-12">
@@ -129,7 +129,7 @@
             	<td>{{ \Carbon\Carbon::parse($users->created_at)->format('D, M j, Y g:i A') }}</td> 
 									
                 <td>
-                    <a class="btn btn-secondary btn-sm" href="{{url('profile/'.$users->id)}}" id="153"  role="button">
+                    <a class="btn btn-secondary btn-sm" href="{{ route('admin.profile', ['id' => $users->id]) }}" id="153"  role="button">
                         Manage
                     </a>
                 </td> 

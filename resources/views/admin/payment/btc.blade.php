@@ -36,17 +36,17 @@
 			  <p class="card-description">
 			      
 			      
-				<form method="post" action="{{route('update-solana')}}" enctype="multipart/form-data">
+				<form method="post" action="{{route('admin.update-btc')}}" enctype="multipart/form-data">
 					@csrf
 
    <div class="form-group">
-       <label>Update Solana Wallet Address</label>
-   <input type="text" name="solana_address" class="form-control form-control-user" placeholder="New wallet address" value="{{Auth::user()->solana_address}}">
+       <label>Update Bitcoin Wallet Address</label>
+   <input type="text" name="btc_address" class="form-control form-control-user" placeholder="New wallet address" value="{{Auth::user()->btc_address}}">
    </div>
    <div class="form-group">
        <label>Update Bar Code</label>
    <input type="file" name = "image"  class="form-control">
-	   <img src="{{asset('admin/uploads/admin/'.Auth::user()->solanaImage)}}" width="60px" height="60px"/>
+	   <img src="{{asset('admin/uploads/admin/'.Auth::user()->btcImage)}}" width="60px" height="60px"/>
 	   @error('image')<small class="text-danger">{{$message}}</small> @enderror
 	   </div>
   <button type="submit" name="usdt" class="btn btn-primary btn-user btn-block"> update </button>

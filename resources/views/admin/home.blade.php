@@ -9,174 +9,191 @@
                             <h5 class="mb-2 text-white op-7">Welcome, {{Auth::user()->name}}</h5> 
                         </div>
                         <div class="py-2 ml-md-auto py-md-0">
-                            <a href="{{url('manage-deposit')}}" class="mr-2 btn btn-success btn-border ">Deposits</a>
-                            <a href="{{url('manage-withdrawal')}}" class="mr-2 btn btn-danger btn-border ">Withdrawals</a>
-                            <a href="{{url('manage-users')}}" class="btn btn-secondary ">Users</a>
+                            <a href="{{route('admin.manage-deposit')}}" class="mr-2 btn btn-success btn-border ">Deposits</a>
+                            <a href="{{route('admin.manage-withdrawal')}}" class="mr-2 btn btn-danger btn-border ">Withdrawals</a>
+                            <a href="{{route('admin.manage.users')}}" class="btn btn-secondary ">Users</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div>
     </div>            <div>
-    </div>            <div class="page-inner mt--5">
-                <!-- Beginning of  Dashboard Stats  -->
-                <div class="row row-card-no-pd bg-dark shadow-lg mt--2">
-                    <div class="col-sm-6 col-md-3">
-                        <div class="card card-stats card-round bg-dark full-height">
-                            <div class="card-body ">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="text-center icon-big">
-                                            <i class="fa fa-download text-warning"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-8 col-stats">
-                                        <div class="numbers">
-                                            <p class="card-category">Total Deposit</p>
-                                         
-                                            </div>
-                                    </div>
-                                </div>
+    </div>         <div class="page-inner mt--5">
+    <!-- Beginning of  Dashboard Stats  -->
+    <div class="row row-card-no-pd bg-dark shadow-lg mt--2">
+        
+        <!-- Total Deposit -->
+        <div class="col-sm-6 col-md-3">
+            <div class="card card-stats card-round bg-dark full-height">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="text-center icon-big">
+                                <i class="fa fa-download text-warning"></i>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-6 col-md-3">
-                        <div class="card card-stats card-round bg-dark full-height">
-                            <div class="card-body ">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="text-center icon-big">
-                                            <i class="flaticon-download text-info"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-8 col-stats">
-                                        <div class="numbers">
-                                            <p class="card-category">Pending Deposit(s)</p>
-                                                                                                                             
-                                          </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-3">
-                        <div class="card card-stats card-round bg-dark full-height">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="text-center icon-big">
-                                            <i class="flaticon-arrows-1 text-danger"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-8 col-stats">
-                                        <div class="numbers">
-                                            <p class="card-category">Total Withdrawal</p>
-                                            
-                                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-3">
-                        <div class="card card-stats card-round bg-dark full-height">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="text-center icon-big">
-                                            <i class="flaticon-arrow text-secondary"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-8 col-stats">
-                                        <div class="numbers">
-                                            <p class="card-category">Pending Withdrawal</p>
-                                         
-                                            </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-3">
-                        <div class="card card-stats card-round bg-dark">
-                            <div class="card-body ">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="text-center icon-big">
-                                            <i class="flaticon-users text-success"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-8 col-stats">
-                                        <div class="numbers">
-                                            
-                                            <p class="card-category">Total Users</p>
-                                            <h4 class="card-title text-light"></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-3">
-                        <div class="card card-stats card-round bg-dark">
-                            <div class="card-body ">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="text-center icon-big">
-                                            <i class="flaticon-remove-user text-danger"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-8 col-stats">
-                                        <div class="numbers">
-                                            <p class="card-category">Block Users</p>
-                                            <h4 class="card-title text-light"></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-3">
-                        <div class="card card-stats card-round bg-dark">
-                            <div class="card-body ">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="text-center icon-big">
-                                            <i class="flaticon-user-2 text-success"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-8 col-stats">
-                                        <div class="numbers">
-                                            <p class="card-category">Active Users</p>
-                                            <h4 class="card-title text-light"></h4> 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-sm-6 col-md-3">
-                        <div class="card card-stats card-round bg-dark">
-                            <div class="card-body ">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="text-center icon-big">
-                                            <i class="flaticon-diagram text-warning"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-8 col-stats">
-                                        <div class="numbers">
-                                            <p class="card-category">Purchased Accounts</p>
-                                            <h4 class="card-title text-light"></h4> 
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="col-8 col-stats">
+                            <div class="numbers">
+                                <p class="card-category">Total Deposit</p>
+                                <h4 class="card-title text-light">{{ $totalDeposits }}</h4>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
+            </div>
+        </div>
+
+        <!-- Pending Deposit(s) -->
+        <div class="col-sm-6 col-md-3">
+            <div class="card card-stats card-round bg-dark full-height">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="text-center icon-big">
+                                <i class="flaticon-download text-info"></i>
+                            </div>
+                        </div>
+                        <div class="col-8 col-stats">
+                            <div class="numbers">
+                                <p class="card-category">Pending Deposit(s)</p>
+                                <h4 class="card-title text-light">{{ $pendingDeposits }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Withdrawal -->
+        <div class="col-sm-6 col-md-3">
+            <div class="card card-stats card-round bg-dark full-height">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="text-center icon-big">
+                                <i class="flaticon-arrows-1 text-danger"></i>
+                            </div>
+                        </div>
+                        <div class="col-8 col-stats">
+                            <div class="numbers">
+                                <p class="card-category">Total Withdrawal</p>
+                                <h4 class="card-title text-light">{{ $totalWithdrawals }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pending Withdrawal -->
+        <div class="col-sm-6 col-md-3">
+            <div class="card card-stats card-round bg-dark full-height">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="text-center icon-big">
+                                <i class="flaticon-arrow text-secondary"></i>
+                            </div>
+                        </div>
+                        <div class="col-8 col-stats">
+                            <div class="numbers">
+                                <p class="card-category">Pending Withdrawal</p>
+                                <h4 class="card-title text-light">{{ $pendingWithdrawals }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Users -->
+        <div class="col-sm-6 col-md-3">
+            <div class="card card-stats card-round bg-dark">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="text-center icon-big">
+                                <i class="flaticon-users text-success"></i>
+                            </div>
+                        </div>
+                        <div class="col-8 col-stats">
+                            <div class="numbers">
+                                <p class="card-category">Total Users</p>
+                                <h4 class="card-title text-light">{{ $totalUsers }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Block Users -->
+        <div class="col-sm-6 col-md-3">
+            <div class="card card-stats card-round bg-dark">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="text-center icon-big">
+                                <i class="flaticon-remove-user text-danger"></i>
+                            </div>
+                        </div>
+                        <div class="col-8 col-stats">
+                            <div class="numbers">
+                                <p class="card-category">Users</p>
+                                <h4 class="card-title text-light"></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Users -->
+        <div class="col-sm-6 col-md-3">
+            <div class="card card-stats card-round bg-dark">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="text-center icon-big">
+                                <i class="flaticon-user-2 text-success"></i>
+                            </div>
+                        </div>
+                        <div class="col-8 col-stats">
+                            <div class="numbers">
+                                <p class="card-category">Active Users</p>
+                                <h4 class="card-title text-light">{{$activeUsers}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Bots Purchased -->
+        <div class="col-sm-6 col-md-3">
+            <div class="card card-stats card-round bg-dark">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="text-center icon-big">
+                                <i class="flaticon-diagram text-warning"></i>
+                            </div>
+                        </div>
+                        <div class="col-8 col-stats">
+                            <div class="numbers">
+                                <p class="card-category">Total Bots Purchased</p>
+                                <h4 class="card-title text-light">{{ $totalBotsPurchased }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+                {{-- <div class="row">
                     <div class="col-md-12">
                         <div class="overflow-auto">
                             <canvas id="myChart" height="100" class="text-light" ></canvas>
@@ -225,8 +242,8 @@
                         </script>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div> 
+        </div>--}}
 
 @include('admin.footer')
 				

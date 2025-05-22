@@ -54,7 +54,7 @@
                         value="{{$payments->btc_address}}" readonly>
                         <button class = "btn btn-info" onclick="myFunction()">Copy Address</button>
                         <div class="product-cover">
-                      <img src="{{asset('admin/uploads/admin/'.$payments->btcImage)}}" width="40%" height="50%" />
+                      <img src="{{asset('admin/uploads/admin/'.$payments->btc_image)}}" width="40%" height="50%" />
                     </div>
                       @endforeach
 
@@ -64,7 +64,7 @@
                       value="{{$payments->usdt_address}}" readonly>
                       <button class = "btn btn-info" onclick="myFunction()">Copy Address</button>
                       <div class="product-cover">
-                    <img src="{{asset('admin/uploads/admin/'.$payments->usdtImage)}}" width="40%" height="50%" />
+                    <img src="{{asset('admin/uploads/admin/'.$payments->usdt_image)}}" width="40%" height="50%" />
                   </div>
                   @endforeach
                       @elseif($item=='Ethereum')
@@ -74,7 +74,7 @@
                       value="{{$payments->eth_address}}" readonly>
                       <button class = "btn btn-info" onclick="myFunction()">Copy Address</button>
                       <div class="product-cover">
-                    <img src="{{asset('admin/uploads/admin/'.$payments->ethImage)}}" width="40%" height="50%" />
+                    <img src="{{asset('admin/uploads/admin/'.$payments->eth_image)}}" width="40%" height="50%" />
                   </div>
                       @endforeach
 
@@ -85,7 +85,7 @@
                       value="{{$payments->litecoin_address}}" readonly>
                       <button class = "btn btn-info" onclick="myFunction()">Copy Address</button>
                       <div class="product-cover">
-                    <img src="{{asset('admin/uploads/admin/'.$payments->litecoinImage)}}" width="40%" height="50%" />
+                    <img src="{{asset('admin/uploads/admin/'.$payments->litecoin_image)}}" width="40%" height="50%" />
                   </div>
                       @endforeach
 
@@ -96,7 +96,7 @@
                       value="{{$payments->solana_address}}" readonly>
                       <button class = "btn btn-info" onclick="myFunction()">Copy Address</button>
                       <div class="product-cover">
-                    <img src="{{asset('admin/uploads/admin/'.$payments->solanaImage)}}" width="40%" height="50%" />
+                    <img src="{{asset('admin/uploads/admin/'.$payments->solana_image)}}" width="40%" height="50%" />
                   </div>
                       @endforeach
 
@@ -107,7 +107,7 @@
                       value="{{$payments->bnb_address}}" readonly>
                       <button class = "btn btn-info" onclick="myFunction()">Copy Address</button>
                       <div class="product-cover">
-                    <img src="{{asset('admin/uploads/admin/'.$payments->bnbImage)}}" width="40%" height="50%" />
+                    <img src="{{asset('admin/uploads/admin/'.$payments->bnb_image)}}" width="40%" height="50%" />
                   </div>
                       @endforeach
 
@@ -118,7 +118,7 @@
                       value="{{$payments->xrp_address}}" readonly>
                       <button class = "btn btn-info" onclick="myFunction()">Copy Address</button>
                       <div class="product-cover">
-                    <img src="{{asset('admin/uploads/admin/'.$payments->xrpImage)}}" width="40%" height="50%" />
+                    <img src="{{asset('admin/uploads/admin/'.$payments->xrp_image)}}" width="40%" height="50%" />
                   </div>
                       @endforeach
                       @endif                                                          </div>

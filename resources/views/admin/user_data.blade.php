@@ -17,16 +17,16 @@
                                     <h1 class="d-inline text-primary">{{$profileData->name}}</h1><span></span>
                                     <div class="d-inline">
                                         <div class="float-right btn-group">
-                                            <a class="btn btn-primary btn-sm" href="{{route('manage.users')}}"> <i class="fa fa-arrow-left"></i> back</a> &nbsp;
+                                            <a class="btn btn-primary btn-sm" href="{{route('admin.manage.users')}}"> <i class="fa fa-arrow-left"></i> back</a> &nbsp;
                                             <button type="button" class="btn btn-secondary dropdown-toggle btn-sm" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
                                               Actions
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-lg-right">
                                                 {{-- <a class="dropdown-item" href="{{route('login.activity',$profileData->id)}}">Login Activity</a> --}}
-                                                <a class="dropdown-item" href="{{route('deposit.history',$profileData->id)}}">Deposit History</a>
-                                                <a class="dropdown-item" href="{{route('transfer.history',$profileData->id)}}">Transfer History</a>
-                                                <a class="dropdown-item" href="{{route('withdrawal.history',$profileData->id)}}">Withdrawal History</a>
-                                                <a class="dropdown-item" href="{{route('bot.history',$profileData->id)}}">Bot History</a>
+                                                <a class="dropdown-item" href="{{route('admin.deposit.history',$profileData->id)}}">Deposit History</a>
+                                                <a class="dropdown-item" href="{{route('admin.transfer.history',$profileData->id)}}">Transfer History</a>
+                                                <a class="dropdown-item" href="{{route('admin.withdrawal.history',$profileData->id)}}">Withdrawal History</a>
+                                                <a class="dropdown-item" href="{{route('admin.bot.history',$profileData->id)}}">Bot History</a>
                                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#accountSuspension">Account Suspension</a>                                                                                                                                                
                                                 <a href="#"  data-toggle="modal" data-target="#topupModal" class="dropdown-item">Account Funding</a>
                                                 {{-- <a href="#"  data-toggle="modal" data-target="#withdrawalsettings" class="dropdown-item">Withdrawal Settings</a> --}}
@@ -77,7 +77,7 @@
                                 <div class="col-md-3">
                                     <h5>Purchased. Account</h5>
                                     
-                                 <a class="btn btn-sm btn-primary d-inline" href="{{route('purchased.account',$profileData->id)}}">View Accounts</a>  
+                                 <a class="btn btn-sm btn-primary d-inline" href="{{route('admin.purchased.account',$profileData->id)}}">View Accounts</a>  
                                                                         
                                 </div>
 
@@ -85,7 +85,7 @@
                                 <div class="col-md-3">
                                     <h5>Kyc Details</h5>
                                     
-                                 <a class="btn btn-sm btn-primary d-inline" href="{{route('kyc.details',$profileData->id)}}">View Kyc</a>  
+                                 <a class="btn btn-sm btn-primary d-inline" href="{{route('admin.kyc.details',$profileData->id)}}">View Kyc</a>  
                                                                         
                                 </div>
 
@@ -167,7 +167,7 @@
                     <button type="button" class="close text-light" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body bg-dark">
-                <form action="{{route('credit-debit')}}" method ="POST" enctype="multipart/form-data">
+                <form action="{{route('admin.credit-debit')}}" method ="POST" enctype="multipart/form-data">
 											{{ csrf_field()}}  
                     <div class="form-group">
                       <input type="hidden" class="form-control" name="user_id" value="{{$profileData->id}}">
@@ -216,7 +216,7 @@
                     <button type="button" class="close text-light" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body bg-dark">
-                <form action="{{ route('signal.strength',$profileData->id)}}" method ="POST">
+                <form action="{{ route('admin.signal.strength',$profileData->id)}}" method ="POST">
 											{{ csrf_field()}}  
                                        
                         <div class="form-group">
@@ -244,7 +244,7 @@
                     <button type="button" class="close text-light" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body bg-dark">
-                <form action="{{ route('account.status',$profileData->id)}}" method ="POST">
+                <form action="{{ route('admin.account.status',$profileData->id)}}" method ="POST">
 											{{ csrf_field()}}                       
                         <div class="form-group">
                             <input class="form-control bg-dark text-light" placeholder="{{$profileData->account_status}}" type="text" name="account_status" required>
@@ -279,7 +279,7 @@
                     <button type="button" class="close text-light" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body bg-dark">
-                <form action="{{route('withdrawal.settings',$profileData->id)}}" method ="POST" enctype="multipart/form-data">
+                <form action="{{route('admin.withdrawal.settings',$profileData->id)}}" method ="POST" enctype="multipart/form-data">
 										{{ csrf_field()}}  
                                 
                         
@@ -320,7 +320,7 @@
                 </div>
                 <div class="modal-body bg-dark">
                     <p class="text-light">This message will be sent to {{$profileData->name}}</p>
-                    <form style="padding:3px;" role="form" method="post" action="{{ route('send.mail')}}">
+                    <form style="padding:3px;" role="form" method="post" action="{{ route('admin.send.mail')}}">
                         @csrf
                         
                          <div class=" form-group">
@@ -353,7 +353,7 @@
                     <button type="button" class="close text-light" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body bg-dark">
-                    <a class="btn btn-success" href="{{ route('users.impersonate', $profileData->id) }}">Proceed</a>
+                    <a class="btn btn-success" href="{{ route('admin.users.impersonate', $profileData->id) }}">Proceed</a>
                 </div>
             </div>
         </div>
@@ -370,7 +370,7 @@
                     <button type="button" class="close text-light" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body bg-dark">
-                    <a class="btn btn-success" href="{{ route('user.verification', $profileData->id) }}">Verify</a>
+                    <a class="btn btn-success" href="{{ route('admin.user.verification', $profileData->id) }}">Verify</a>
                 </div>
             </div>
         </div>
@@ -387,7 +387,7 @@
                     <button type="button" class="close text-light" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body bg-dark">
-                    <a class="btn btn-success" href="{{ route('user.suspension', $profileData->id) }}">Account Suspension</a>
+                    <a class="btn btn-success" href="{{ route('admin.user.suspension', $profileData->id) }}">Account Suspension</a>
                 </div>
             </div>
         </div>
@@ -405,7 +405,7 @@
                 </div>
                 <div class="modal-body bg-dark">
                     <p class="text-light">You are clearing account for {{$profileData->name}} to $0.00</p>
-                    <a class="btn btn-light" href="{{route('clear.account',$profileData->id)}}">Proceed</a>
+                    <a class="btn btn-light" href="{{route('admin.clear.account',$profileData->id)}}">Proceed</a>
                 </div>
             </div>
         </div>
@@ -424,7 +424,7 @@
                 </div>
                 <div class="modal-body bg-dark p-3">
                     <p class="text-light">Are you sure you want to delete {{$profileData->name}} Account? Everything associated with this account will be loss.</p>
-                    <a class="btn btn-danger" href="{{ route('delete.user', $profileData->id) }}">Yes i'm sure</a>
+                    <a class="btn btn-danger" href="{{ route('admin.delete.user', $profileData->id) }}">Yes i'm sure</a>
                 </div>
             </div>
         </div>

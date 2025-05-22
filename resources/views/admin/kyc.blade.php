@@ -7,7 +7,7 @@
 <div class="alert alert-success mb-2">{{session('message')}}</div>
  @endif
 					<div class="mt-2 mb-4">
-						<h1 class="title1 text-light">FundformeProgram account verification details</h1>
+						<h1 class="title1 text-light">Pinnacleassetstrd account verification details</h1>
 					</div>
 							
 										<div class="mb-5 row">
@@ -48,7 +48,8 @@
 											<td>{{$userProfile->created_at}}</td>
 
 											<td>
-												<form action="{{url('accept-kyc/'.$userProfile->id)}}">
+												<form action="{{ route('admin.accept.kyc', $userProfile->id) }}
+">
 													@csrf
 													<input type="hidden" name="status" value="1">
 													<button type="submit" class="btn btn-primary me-2"
@@ -56,7 +57,8 @@
 												</form>
 
 												<br>
-												<form action="{{url('reject-kyc/'.$userProfile->id)}}">
+												<form action="{{ route('admin.reject.kyc', $userProfile->id) }}
+">
 													@csrf
 													<input type="hidden" name="status" value="0">
 													<button type="submit" class="btn btn-danger"

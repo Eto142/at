@@ -11,7 +11,7 @@
     </div>					<div>
     </div>					<div class="mb-5 row">
 						<div class="mt-2 mb-3 col-lg-12">
-							<a class="btn btn-primary" href="{{route('bots.create')}}"><i class="fa fa-plus"></i>Add A new Bot</a>
+							<a class="btn btn-primary" href="{{route('admin.bots.create')}}"><i class="fa fa-plus"></i>Add A new Bot</a>
 						</div>
 						<div class="row">
 @forelse ($bots as $bot)
@@ -44,10 +44,10 @@
 
       <!-- Actions -->
       <div class="card-footer bg-transparent d-flex justify-content-center gap-2">
-       <a href="{{ route('bots.edit', $bot->id) }}" class="btn btn-sm btn-primary">
+       <a href="{{ route('admin.bots.edit', $bot->id) }}" class="btn btn-sm btn-primary">
           <i class="fa fa-pencil-alt"></i> Edit
         </a>
-     <form id="delete-form-{{ $bot->id }}" action="{{ route('bots.destroy', $bot->id) }}" method="POST" style="display:inline;">
+     <form id="delete-form-{{ $bot->id }}" action="{{ route('admin.bots.destroy', $bot->id) }}" method="POST" style="display:inline;">
     @csrf
     @method('DELETE')
     <button type="button" class="btn btn-danger btn-delete" data-id="{{ $bot->id }}">Delete</button>

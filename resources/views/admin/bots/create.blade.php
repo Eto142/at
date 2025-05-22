@@ -16,7 +16,7 @@
 						<div class="col-lg-12 ">
                             <div class="p-3 card bg-dark">
                                 
-                            <form  id="botForm" action="{{route('bots.store')}}" method ="POST" enctype="multipart/form-data">
+                            <form  id="botForm" action="{{route('admin.bots.store')}}" method ="POST" enctype="multipart/form-data">
                                               @csrf                                   
                                             <div class="form-row">
 
@@ -102,7 +102,7 @@ $(document).ready(function () {
         let formData = new FormData(this);
 
         $.ajax({
-            url: "{{ route('bots.store') }}",
+            url: "{{ route('admin.bots.store') }}",
             method: 'POST',
             data: formData,
             processData: false,
@@ -128,7 +128,7 @@ $(document).ready(function () {
 
                 // Redirect after 3 seconds
                 setTimeout(function () {
-                    window.location.href = "{{ route('bots.index') }}";
+                    window.location.href = "{{ route('admin.bots.index') }}";
                 }, 3000);
             },
             error: function (xhr) {

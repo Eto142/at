@@ -37,7 +37,7 @@
 							</div>
 							@endif
 
-							<form action="{{ route('save.trader') }}" method="post" enctype="multipart/form-data">
+							<form action="{{ route('admin.save.trader') }}" method="post" enctype="multipart/form-data">
 								@csrf
 
 								<div class="mb-3 mt-5">
@@ -120,9 +120,9 @@
 										<td>{{$trader->name}}</td>
 										<td>{{$trader->copier}}</td>
 										<td>{{$trader->gains}}</td>
-										<td><a href="{{url('edit_trader/'.$trader->id)}}"><span
+										<td><a href="{{ route('admin.edit_trader', ['id' => $trader->id]) }}"><span
 													class="badge shade-blue">EDIT TRADER</span></a></td>
-										<td><a href="{{url('delete-trade/'.$trader->id)}}"
+										<td><a href="{{route('admin.delete.trader', ['id' => $trader->id]) }}"
 												onclick="confirm('Are you sure you want to delete this trader?')"><span
 													class="badge shade-red">DELETE TRADER</span></a></td>
 

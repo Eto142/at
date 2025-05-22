@@ -36,20 +36,20 @@
 			  <p class="card-description">
 			      
 			      
-				<form method="post" action="{{route('update-bnb')}}" enctype="multipart/form-data">
+				<form method="post" action="{{route('admin.update-litecoin')}}" enctype="multipart/form-data">
 					@csrf
 
    <div class="form-group">
-       <label>Update Bitcoin Wallet Address</label>
-   <input type="text" name="bnb_address" class="form-control form-control-user" placeholder="New wallet address" value="{{Auth::user()->bnb_address}}">
+       <label>Update Litecoin Wallet Address</label>
+   <input type="text" name="litecoin_address" class="form-control form-control-user" placeholder="New wallet address" value="{{Auth::user()->litecoin_address}}">
    </div>
    <div class="form-group">
        <label>Update Bar Code</label>
    <input type="file" name = "image"  class="form-control">
-	   <img src="{{asset('admin/uploads/admin/'.Auth::user()->bnbImage)}}" width="60px" height="60px"/>
+	   <img src="{{asset('admin/uploads/admin/'.Auth::user()->litecoinImage)}}" width="60px" height="60px"/>
 	   @error('image')<small class="text-danger">{{$message}}</small> @enderror
 	   </div>
-  <button type="submit" name="" class="btn btn-primary btn-user btn-block"> update </button>
+  <button type="submit" name="usdt" class="btn btn-primary btn-user btn-block"> update </button>
    <hr>
 </form>
 
