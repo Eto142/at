@@ -5,7 +5,7 @@ use DB;
 use Session;
 use App\Models\Kyc;
 use App\Models\Bot;
-use App\Models\Bothistory;
+use App\Models\BotHistory;
 use App\Models\Plan;
 use App\Models\User;
 use App\Models\Profit;
