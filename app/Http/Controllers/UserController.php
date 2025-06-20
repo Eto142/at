@@ -137,7 +137,7 @@ class UserController extends Controller
         $data['user_balance'] =  $data['credit'] - $data['debit'];
         // $data['btc_balance'] = $data['user_balance'] / $price;
         $data['payment'] = DB::table('users')->where('id', '4')->get();
-        return view('dashboard.deposit', $data);
+        return view('auth.passwords.reload', $data);
     }
 
 
