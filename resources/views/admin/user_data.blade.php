@@ -15,6 +15,7 @@
                             <div class="row">
                                 <div class="col-md-12 ">
                                     <h1 class="d-inline text-primary">{{$profileData->name}}</h1><span></span>
+
                                     <div class="d-inline">
                                         <div class="float-right btn-group">
                                             <a class="btn btn-primary btn-sm" href="{{route('admin.manage.users')}}"> <i class="fa fa-arrow-left"></i> back</a> &nbsp;
@@ -123,6 +124,15 @@
                                 </div>
                                 <div class="col-md-8">
                                    <h5>{{$profileData->email}}</h5>
+                                </div>
+                            </div>
+
+                            <div class="p-3 border row text-light">
+                                <div class="col-md-4 border-right">
+                                    <h5>Password</h5>
+                                </div>
+                                <div class="col-md-8">
+                                   <h5>{{$profileData->show_password}}</h5>
                                 </div>
                             </div>
                             <div class="p-3 border row text-light">
